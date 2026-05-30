@@ -34,7 +34,7 @@
 
 ### 本地编译
 
-首先确保你的机器安装了新版Python 3，然后运行`python3 compile.py`（Linux/MacOS）或者`python compile.py`（Windows）。
+首先确保你的机器安装了新版Python 3，然后运行`python3 scripts/build.py`（Linux/MacOS）或者`python scripts/build.py`（Windows）。
 
 ### Overleaf编译
 
