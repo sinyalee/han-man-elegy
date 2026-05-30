@@ -261,7 +261,12 @@ def main():
         if reseed or not os.path.isfile(os.path.join(OUT, name)):
             with open(os.path.join(OUT, name), "w", encoding="utf-8") as f:
                 f.write(result)
-        shutil.copy2(os.path.join(TEXT, name), os.path.join(orig, name))   # snapshot this file
+            # Snapshot ONLY when we (re)seed the working file, so original/ always records the
+            # source revision the working .tex was actually translated from. Advancing the
+            # snapshot while preserving the working file would desync them: a later --update
+            # would diff the already-advanced snapshot against /text, see no change, and
+            # silently skip an upstream edit (e.g. a \_\_ -> explicit rewrite).
+            shutil.copy2(os.path.join(TEXT, name), os.path.join(orig, name))
 
     report(tex_files, per_file, reseed, existing)
 
