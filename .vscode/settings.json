@@ -1,6 +1,12 @@
 {
     "workbench.colorTheme": "Visual Studio Light",
+    "pylint.enabled": false,
+    "flake8.enabled": false,
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": false,
+    "python.linting.enabled": false,
     "[latex]": {
-        "editor.wordWrap": "on"
+        "editor.wordWrap": "on",
+        "editor.fontSize": 16
     }
 }

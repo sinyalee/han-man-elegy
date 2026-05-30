@@ -9,7 +9,7 @@
 
 ### 版权
 
-作者李新野自愿通过CC0协议（Creative Common Zero）放弃所有版权。此放弃版权的行为不可撤销。本文（包括模版之外的LaTeX源代码）在美国、中国和全球所有国家均永久属于公有领域。
+作者李新野（Sinya Lee）自愿通过CC0协议（Creative Common Zero）放弃所有版权。此放弃版权的行为不可撤销。本文及源代码在美国、中国和全球所有国家均永久属于公有领域。
 
 ### 维护
 
@@ -31,25 +31,16 @@
 
 所有翻译、二创作者都拥有衍生作品的版权。可以使用衍生作品盈利。
 
-## 如果你想要自己编译
+## 编译方式
 
-### 环境设置
+### 本地编译
 
-本文使用xelatex。需要的包在[package.tex](package.tex)。
+首先确保你的机器安装了Python 3，然后运行以下命令：
 
-本人是先安装TeX Live获取全套LaTeX支持。再安装CTeX套装获取中文支持。再安装ccicons包获取CC0的标志。这个标志不是必要的，可以直接删除。
-
-### 编译命令
-要编译本书，请在根目录执行以下命令（注意要执行两次）：
-```
-xelatex -shell-escape book.tex
-xelatex -shell-escape book.tex
+```bash
+python3 compile.py
 ```
 
-最终生成文件是根目录的[book.pdf](book.pdf)
+### Overleaf编译
 
-如果你不熟悉命令行，可以直接将项目上传至Overleaf，然后将编译器更换成XeLaTeX即可编译。
-
-### 模版
-
-本文使用中山大学博士生Nelson Cheung的LaTeX中文书籍模版。编译本书时可以参考该模版的说明。该模版的GitHub地址：[https://github.com/Nelson-Cheung/latex-book-template](https://github.com/Nelson-Cheung/latex-book-template)
+如果你不熟悉命令行，可以直接将项目上传至Overleaf，将主文档（Main document）设为 `text/book.tex`，再将编译器更换成XeLaTeX即可编译。
