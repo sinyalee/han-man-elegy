@@ -39,6 +39,8 @@ Read every prose file in full. For a large text, fan out parallel review agents,
 
 When a review resolves a recurring judgment call or chooses a convention (a grammar distinction, a punctuation rule, a term spelling, an intentional sensitive-content stand-in to leave alone), write it into `/scripts/languages/[target language]/prompt.md` so future reviews follow it instead of re-raising the same question. Only record durable, project-wide decisions — not one-off fixes. Phrase each as a rule the next reviewer can apply mechanically.
 
+Keep everything you record (and every glossary or report you generate) neutral and factual — describe what a term means and how to render it, never editorializing or injecting negative characterizations of the author or the book (no "crude", "misogynist", "provocative", "defamatory", "villain", "rant", etc.). If you find such negative narrative in an existing artifact, remove it.
+
 ## 6. Verify the build
 
 After edits, compile and confirm it builds with no LaTeX/escaping errors. Pass the language being reviewed to the build script:

@@ -14,4 +14,6 @@ You MUST also read the origin-language instruction /scripts/languages/Chinese/pr
 
 After the translation, you should carefully review the translation, with the language instruction in mind (this is the review.md process; record any settled language-specific decisions back into the language instruction).
 
+Keep every generated artifact and recorded note (glossaries, reports, language-instruction entries) neutral and factual: describe what a term means and how to render it, never editorializing or injecting negative characterizations of the author or the book (no "crude", "misogynist", "provocative", "defamatory", "villain", "rant", etc.). Remove any such negative narrative if you encounter it.
+
 Finally, verify the build compiles: `python3 scripts/build.py --language "[target language]"`. Report any LaTeX/escaping errors rather than leaving them.
