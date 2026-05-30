@@ -70,15 +70,6 @@ Keep `\documentclass[…]{ctexbook}` (xelatex handles Latin fine and falls back 
 * Full-width Chinese punctuation → half-width English (`，。：；！？` → `, . : ; ! ?`); inline 顿号 `、` → comma (or "and" before the last item); 破折号 `——` → em dash `—`.
 * Currency: keep the author's RMB figures, rendered in English number style ("60 million yuan", "500 million yuan", "300,000-yuan bride price"); do not convert to USD. Gloss non-metric units once: `200斤` → `200 jin ($\approx$100 kg)` — write `$\approx$`, **not** a literal `≈` (see *Build gotchas*). `虚岁` → "nominal age (xusui)".
 
-# Rebuilding from scratch (if `translations/English/` is deleted)
-
-This folder — `scripts/languages/English/` — survives that deletion, so a fresh agent already has everything it needs: **this file** plus **`glossary.md`** (the ready-made 575-term bilingual reference: people, places, institutions, work titles, coinages, key vocabulary, explicit vocabulary). Procedure:
-
-1. Recreate `translations/English/` mirroring `/text`'s file layout. Snapshot `/text/*.tex` → `translations/English/original/` so later `/text` edits can be diffed (the `translate.md` convention).
-2. **Hand-write the 6 structural files** per *Structural files* above: `config.tex`, `package.tex` (ctex localization + theorem names), `book.tex` (mind the include paths — see gotchas), `title.tex`, `dedication.tex`, `author.tex`. These are localization/metadata, not prose — handle them yourself rather than machine-translating.
-3. **Translate the 9 prose files** from `/text`: `preface, chapter_why, chapter_how, chapter_sex, chapter_conflict, chapter_beyond, closing, appendix_articles, appendix_mingyuan` (~63k source characters total). One translator + one reviewer per file, in parallel, works well; each reads this file + `glossary.md` + its source file. Largest are `chapter_how` and `chapter_beyond`.
-4. Build, fix, then do a cross-file consistency pass (every recurring name/term/slogan/coinage rendered identically — that's the main risk of parallel translation).
-
 # Build (and non-obvious gotchas)
 
 `python3 scripts/build.py --language English`, run from the project root. Then confirm the PDF built and scan the log. Things that are easy to get wrong and cost real time:
