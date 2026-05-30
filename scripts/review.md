@@ -1,4 +1,4 @@
-Carefully review the latex files. In /text (for original) or /translations/[target language] (for translations).
+Carefully review the latex files. The review target is /text for the original, or /translations/[target language] for a translation. A request to review the "original", "原版", or "Chinese" all mean the source version in /text — these are unambiguous, so start the review directly on the right folder (no need to ask which one).
 
 Before the review, read the language instruction in /scripts/languages/[target language] carefully. It holds the language-specific rules (grammar distinctions, punctuation conventions, sensitive-content handling) that this general process defers to.
 

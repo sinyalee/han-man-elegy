@@ -20,7 +20,7 @@
     - Prompt: get.md
     - Aliases: get, show, show me, give me, fetch, download, get release
 
-A command often carries extra context that the prompt needs — for example a target language ("translate to English", "审查英文翻译"), a specific file, or a release version. Extract that context from the user's request and pass it along to the prompt so it can act on the right target.
+A command often carries extra context that the prompt needs — for example a target language ("translate to English", "审查英文翻译"), a specific file, or a release version. Extract that context from the user's request and pass it along to the prompt so it can act on the right target. If the target is ambiguous or doesn't make sense for the command (e.g. "translate to Chinese", when Chinese is the source language), ask the user to clarify before running the command rather than guessing.
 
 ## Project overview
 
