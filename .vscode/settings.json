@@ -1,3 +1,6 @@
 {
-    "workbench.colorTheme": "Visual Studio Light"
+    "workbench.colorTheme": "Visual Studio Light",
+    "[latex]": {
+        "editor.wordWrap": "on"
+    }
 }
