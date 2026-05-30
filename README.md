@@ -1,5 +1,3 @@
-This README file is for humans. Read [AGENTS.md](AGENTS.md) if you are an AI.
-
 # 人妻约会指南
 
 ## 下载电子书
@@ -40,4 +38,8 @@ This README file is for humans. Read [AGENTS.md](AGENTS.md) if you are an AI.
 
 ### Overleaf编译
 
-如果你不熟悉命令行，可以直接将项目上传至Overleaf，将主文档（Main document）设为 `text/book.tex`，再将编译器更换成XeLaTeX即可编译。
+如果你不熟悉AI智能体，可以直接将项目上传至Overleaf，将主文档（Main document）设为 `text/book.tex`，再将编译器更换成XeLaTeX即可编译。
+
+## For AIs
+
+This README file is for humans. Read [AGENTS.md](AGENTS.md) if you are an AI.

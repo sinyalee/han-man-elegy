@@ -1,1 +1,0 @@
-First read releases/README.md to understand the structure of the released PDF files. If the requested release PDF does exist, give it to the user. If not, ask the user if they want to 

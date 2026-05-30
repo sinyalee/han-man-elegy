@@ -1,4 +1,4 @@
-# Instructions for AIs
+# Instructions for AI Agents
 
 ## Commands
 
@@ -16,9 +16,9 @@
 * Translate
     - Prompt: translate.md
     - Aliases: translate, localize
-* Get Release
-    - Prompt: get_release.md
-    - Aliases: get, show, show me, give me, fetch, download
+* Get
+    - Prompt: get.md
+    - Aliases: get, show, show me, give me, fetch, download, get release
 
 A command often carries extra context that the prompt needs — for example a target language ("translate to English", "审查英文翻译"), a specific file, or a release version. Extract that context from the user's request and pass it along to the prompt so it can act on the right target.
 
