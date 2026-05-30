@@ -59,7 +59,7 @@ Homophone / near-form slips seen in this text: 做为→作为、活得→获得
 
 Frank sex and legal discussion are in-scope and fine. As the uncensored original, restore any garbled / censored sensitive terms to their true forms (see top). Still verify intent for anything that looks like a deliberate stand-in before changing it.
 
-# General knowledge (applies to all translations)
+# General knowledge (applies to all non-Chinese translations)
 
 Shared, target-language-INDEPENDENT background on the source text. Per scripts/translate.md every translation reads this file, so the facts below help any translator (into any language) understand the Chinese original. This section is neutral and factual; it does not judge the author or the book. Detailed per-term *English* renderings live in scripts/languages/English/glossary.md — that file is for English only; the facts here are language-neutral. For people: use each figure's established (non-pinyin) name where one exists (Taiwan/HK/overseas figures, and anyone with a well-known foreign-language name); otherwise romanize per the target language's convention. This is the UNCENSORED book — all real names and references below stay intact (do not censor them).
 

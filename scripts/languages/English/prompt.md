@@ -62,12 +62,29 @@ Keep `\documentclass[…]{ctexbook}` (xelatex handles Latin fine and falls back 
 * `book.tex` must `\include{translations/English/…}` (paths resolve from the project root, where `build.py` runs latexmk — NOT relative to the main file).
 * `config.tex` macro values: `\bookname` → "The Married Woman Dating Guide", `\authorname` → "Sinya Lee", `\bookdate` → "June 2026", `\bookversionstring` → "First Edition v1.6", `\authoraddress` → "Fifth Avenue, Manhattan, New York, USA"; leave `\bookversion`, email, homepage.
 * `title.tex` literal lines: `本书纯属虚构，如果雷同实属巧合` → "This book is a work of fiction; any resemblance to real persons is purely coincidental"; `不设版权，请随意转发分享` → "No copyright — please share and redistribute freely" (keep `\cczero\;`).
+* `dedication.tex`: translate the dedication to the father (李松坚, chairman of Shanghai Mingyuan Group); the centered `{\Large \it …}` slogan must read **identically** to the one in `appendix_mingyuan.tex` — "Live in a Mingyuan property, live a cuckold's life". Keep `\vspace*{\fill}`, `\noindent`, `\\`, `\begin{center}`.
+* `author.tex`: `\chapter*{About the Author}` (starred/unnumbered). Bio facts: born 1991 in Shantou; graduated the Tsinghua "Yao Class", MIT, Brown; worked at Amazon, Facebook, Citadel Securities; founder & CEO of **Alpha Star Research** (阿尔法星研究, an AI quantitative-trading firm); best-known essay `\textit{My Father, Li Songjian}` (a.k.a. `\textit{Three Faces}`), linked via `\hyperref[3faces]{Appendix}`. Keep the `figures/author.jpg` figure block.
 
 # Punctuation, numbers, currency
 
 * Full-width Chinese punctuation → half-width English (`，。：；！？` → `, . : ; ! ?`); inline 顿号 `、` → comma (or "and" before the last item); 破折号 `——` → em dash `—`.
-* Currency: keep the author's RMB figures, rendered in English number style ("60 million yuan", "500 million yuan", "300,000-yuan bride price"); do not convert to USD. Gloss non-metric units once: `200斤` → "200 jin (≈100 kg)". `虚岁` → "nominal age (xusui)".
+* Currency: keep the author's RMB figures, rendered in English number style ("60 million yuan", "500 million yuan", "300,000-yuan bride price"); do not convert to USD. Gloss non-metric units once: `200斤` → `200 jin ($\approx$100 kg)` — write `$\approx$`, **not** a literal `≈` (see *Build gotchas*). `虚岁` → "nominal age (xusui)".
 
-# Build
+# Rebuilding from scratch (if `translations/English/` is deleted)
 
-`python3 scripts/build.py --language English` (from the project root). Report any LaTeX/escaping error rather than leaving it.
+This folder — `scripts/languages/English/` — survives that deletion, so a fresh agent already has everything it needs: **this file** plus **`glossary.md`** (the ready-made 575-term bilingual reference: people, places, institutions, work titles, coinages, key vocabulary, explicit vocabulary). Procedure:
+
+1. Recreate `translations/English/` mirroring `/text`'s file layout. Snapshot `/text/*.tex` → `translations/English/original/` so later `/text` edits can be diffed (the `translate.md` convention).
+2. **Hand-write the 6 structural files** per *Structural files* above: `config.tex`, `package.tex` (ctex localization + theorem names), `book.tex` (mind the include paths — see gotchas), `title.tex`, `dedication.tex`, `author.tex`. These are localization/metadata, not prose — handle them yourself rather than machine-translating.
+3. **Translate the 9 prose files** from `/text`: `preface, chapter_why, chapter_how, chapter_sex, chapter_conflict, chapter_beyond, closing, appendix_articles, appendix_mingyuan` (~63k source characters total). One translator + one reviewer per file, in parallel, works well; each reads this file + `glossary.md` + its source file. Largest are `chapter_how` and `chapter_beyond`.
+4. Build, fix, then do a cross-file consistency pass (every recurring name/term/slogan/coinage rendered identically — that's the main risk of parallel translation).
+
+# Build (and non-obvious gotchas)
+
+`python3 scripts/build.py --language English`, run from the project root. Then confirm the PDF built and scan the log. Things that are easy to get wrong and cost real time:
+
+* **`book.tex` include paths resolve from the project ROOT, not from `book.tex`'s own folder.** `build.py` runs `latexmk` from the repo root *without* `-cd`, so `\input`/`\include` are relative to the root. `book.tex` MUST use `\include{translations/English/chapter_why.tex}` (and `\input{translations/English/config.tex}`, etc.). If you copy the original's `\include{text/...}`, the build **silently compiles the original Chinese instead of the translation** — no error, wrong PDF. (This is exactly the latent bug in `translations/Traditional Chinese/book.tex`.) The English directory name has no space, which also keeps `\include` happy.
+* **`\include{translations/English/package.tex}` lives in the preamble** (before `\begin{document}`), mirroring the original `book.tex`. It prints a harmless `LaTeX Warning: \include should only be used after \begin{document}` — leave it; packages load and the build succeeds.
+* **The Latin text font (Latin Modern) is missing some exotic Unicode glyphs.** A literal `≈` (U+2248) yields a "Missing character" warning and a blank in the PDF — write `$\approx$` instead. (Accented Latin such as `Đông Kinh` renders fine.) If the log says "Missing character", grep the `.tex` for that glyph and swap in a math or ASCII equivalent, then rebuild.
+* **Appendix section numbers are positional.** In `appendix_articles.tex` the four `\section`s are A.1–A.4 in source order; *My Father, Li Songjian* must remain 3rd (A.3) and *My Sister, Li Xinying* 4th (A.4) so `\hyperref[3faces]` / `\hyperref[sister]` and the hardcoded "Appendix A.3/A.4" link text resolve correctly.
+* **Healthy output looks like:** ~140 pages; TOC reads "Contents / Chapter 1–7 / Appendix A–B"; no "Missing character", no "undefined reference" in the log. Report any LaTeX/escaping error rather than leaving it.
