@@ -2,9 +2,13 @@
     "workbench.colorTheme": "Visual Studio Light",
     "pylint.enabled": false,
     "flake8.enabled": false,
-    "python.linting.pylintEnabled": false,
-    "python.linting.flake8Enabled": false,
-    "python.linting.enabled": false,
+    "autopep8.args": [
+        "--max-line-length=200"
+    ],
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.autopep8",
+        "editor.wordWrap": "off"
+    },
     "[latex]": {
         "editor.wordWrap": "on",
         "editor.fontSize": 16

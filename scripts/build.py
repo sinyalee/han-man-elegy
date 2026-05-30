@@ -25,6 +25,7 @@ Usage (can be run from any directory):
     python scripts/build.py --keep                  keep intermediates, build incrementally
 On Windows, if `python` is unavailable, try `py scripts/build.py`.
 """
+
 import argparse
 import glob
 import os
