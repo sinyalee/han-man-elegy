@@ -4,8 +4,9 @@ build.py — full build script for the book (cross-platform: macOS / Linux / Win
 It will:
   1. Locate the project root automatically (this script lives in scripts/, so the
      root is its parent directory).
-  2. Pick the source by language: "Simplified Chinese" builds from text/, any other
-     language builds from translations/<language>/ (where the translated source lives).
+  2. Pick the source by language: "Chinese" (the original, uncensored version) builds
+     from text/; any other language builds from translations/<language>/ (where the
+     translated or derived source lives — e.g. the censored "Simplified Chinese").
   3. Generate a temporary latexmkrc on the fly (deleted afterwards) and compile with
      latexmk + xelatex.
   4. Name the PDF after \bookname in the source's config.tex (fallback "book") and keep
@@ -14,13 +15,15 @@ It will:
 
 Publishing rules (only with --release, after a successful build):
   - always:                    releases/languages/<language>.pdf
-  - "official" languages*:     releases/<bookname>.pdf
-  - Simplified Chinese only:   releases/versions/<bookname>v<bookversion>.pdf
-  (* official = Simplified Chinese, Traditional Chinese, Japanese, English)
+  - "official" languages*:     releases/<bookname>.pdf  (Simplified Chinese = the canonical one)
+  - Chinese (original):        releases/Original.pdf    (renamed, so it doesn't collide)
+  - Chinese (original) only:   releases/versions/<bookname>v<bookversion>.pdf
+  (* official = Chinese, Simplified Chinese, Traditional Chinese, Japanese, English)
 
 Usage (can be run from any directory):
-    python scripts/build.py                        build Simplified Chinese (from text/)
-    python scripts/build.py --language Japanese     build from translations/Japanese/
+    python scripts/build.py                                 build Chinese, the original (from text/)
+    python scripts/build.py --language "Simplified Chinese"  build the censored version (from translations/)
+    python scripts/build.py --language Japanese              build from translations/Japanese/
     python scripts/build.py --release               build and also publish into releases/
     python scripts/build.py --keep                  keep intermediates, build incrementally
 On Windows, if `python` is unavailable, try `py scripts/build.py`.
@@ -42,10 +45,11 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 JOB = "book"                       # latexmk job name -> intermediates are all book.*
 DEFAULT_NAME = "book"              # fallback output name when \bookname is missing
-DEFAULT_LANGUAGE = "Simplified Chinese"
+DEFAULT_LANGUAGE = "Chinese"       # the original, uncensored version; builds from text/
 
 # Languages that also get a copy directly under releases/ (canonical spellings).
 OFFICIAL_LANGUAGES = {
+    "chinese": "Chinese",
     "simplified chinese": "Simplified Chinese",
     "traditional chinese": "Traditional Chinese",
     "japanese": "Japanese",
@@ -170,8 +174,8 @@ def main():
     parser = argparse.ArgumentParser(
         description="Build the book PDF with latexmk + xelatex, and publish to releases/.")
     parser.add_argument("--language", default=DEFAULT_LANGUAGE,
-                        help='language to build (default "Simplified Chinese"); other '
-                             'languages build from translations/<language>/')
+                        help='language to build (default "Chinese", the original, from text/); '
+                             'other languages build from translations/<language>/')
     parser.add_argument("--release", action="store_true",
                         help="also publish copies into releases/ (by default only a local PDF is built)")
     parser.add_argument("--keep", action="store_true",
@@ -183,17 +187,20 @@ def main():
     # Normalize the language: canonical spelling for the official ones, as-typed otherwise.
     lang_key = args.language.strip().lower()
     language = OFFICIAL_LANGUAGES.get(lang_key, args.language.strip())
-    is_simplified = lang_key == DEFAULT_LANGUAGE.lower()
+    is_original = lang_key == DEFAULT_LANGUAGE.lower()   # "chinese" -> the original in text/
 
-    srcdir = "text" if is_simplified else f"translations/{language}"
+    srcdir = "text" if is_original else f"translations/{language}"
     main_tex = f"{srcdir}/book.tex"
     config_tex = f"{srcdir}/config.tex"
 
     if not os.path.isfile(main_tex):
         err(f"source not found: {main_tex}")
-        if not is_simplified:
-            print(f"  Put the {language} translation under {srcdir}/ first "
+        if not is_original:
+            print(f"  Put the {language} source under {srcdir}/ first "
                   f"(mirroring the text/ folder, including a config.tex).")
+            if lang_key == "simplified chinese":
+                print("  (Simplified Chinese is the censored version — generate it from the "
+                      "Chinese original per scripts/languages/Simplified Chinese/prompt.md.)")
         sys.exit(1)
 
     missing = [t for t in ("latexmk", "xelatex") if shutil.which(t) is None]
@@ -240,9 +247,12 @@ def main():
             produced.append((publish(built, f"releases/languages/{language}.pdf"),
                              "by language"))
             if lang_key in OFFICIAL_LANGUAGES:
-                produced.append((publish(built, f"releases/{bookname}.pdf"),
+                # The censored Simplified Chinese is the canonical <bookname>.pdf; the
+                # uncensored original is published as Original.pdf so the two don't collide.
+                release_name = "Original" if is_original else bookname
+                produced.append((publish(built, f"releases/{release_name}.pdf"),
                                  "official release"))
-            if is_simplified:
+            if is_original:
                 if version:
                     produced.append((publish(built, f"releases/versions/{bookname}v{version}.pdf"),
                                      "version archive"))
