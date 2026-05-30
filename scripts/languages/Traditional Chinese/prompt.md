@@ -31,8 +31,11 @@ is not inside a 02/03 word is just marked `¹` (头发: 头 → 頭 silent, 发 
 `01_characters.csv` is generated from OpenCC by `tables/build_tables.py` (see `tables/SOURCES.md`).
 It is large and machine-only — convert.py reads it; you do not need to memorize it.
 
-`02_vocab_stable.csv` and `03_vocab_change.csv` are hand-maintained (`sc,chosen`) and worth
-keeping in mind so a `²`/`³` spot is confirmed the same way every time:
+`02_vocab_stable.csv` and `03_vocab_change.csv` are hand-maintained, with columns
+`sc,chosen,explain`. **Read both tables in full before resolving marks** — the `explain` column
+tells you what each entry means and how to apply it, so a `²`/`³` spot is confirmed the same way
+every time (and so you can see any caveats, e.g. an entry meant for one specific phrase only).
+convert.py reads only `sc,chosen`; `explain` is documentation for the reviewer (you).
 
 * **stable** = keep the standard/mainland form (比特币 → 比特幣, 万象城 → 萬象城, the name
   李松坚 → 李松堅). Pinning the full word also resolves an ambiguous character inside it (万 → 萬).
@@ -41,7 +44,9 @@ keeping in mind so a `²`/`³` spot is confirmed the same way every time:
 **Only table a word whose source has one meaning.** A table entry hits every occurrence, so a
 context-dependent word must stay out and be reviewed per spot: 对象 (partner vs. object),
 默认 (acquiesce vs. computing default), 窗口 (window vs. 窗口期), 程序 (procedure vs. program),
-信息 (a message vs. information). Tabling one would mistranslate its other sense.
+信息 (a message vs. information). Tabling one would mistranslate its other sense. If you must
+table a phrase that could collide with a longer string (e.g. 大冲 the place vs. 大+冲 in 重大冲突),
+say so in its `explain` so the reviewer confirms the `²`/`³` rather than trusting it blindly.
 
 # Settled conventions (do not re-litigate)
 
@@ -84,7 +89,7 @@ Most one-to-many characters have a default that is almost always right (个 → 
 are the ones whose non-default form really occurs in this book — pick by sense:
 
 * `干` → `幹` (do / trunk: 幹活、樹幹), `乾` (dry: 乾淨、乾杯), `干` (shield: 干戈、干預).
-* `后` → `後` (after / behind — almost always), `后` (only 皇后、太后、皇天后土).
+* `后` → `後` (after / behind — almost always), `后` (sovereign / queen: 皇后、太后、皇天后土、蜂后 queen bee).
 * `里` → `裏` (inside — default here), `里` (li-unit 公里, place/surnames 故里、里長).
 * `面` → `面` (face / side — default), `麪` (flour / noodles: 麪條、麪粉).
 * `发` → `發` (emit / happen: 發生、發布), `髮` (hair: 頭髮、理髮).
@@ -103,6 +108,17 @@ are the ones whose non-default form really occurs in this book — pick by sense
 * `板` → `板` (board — default), `闆` (only 老闆／老闆娘; pinned 老板→老闆 in `02_vocab_stable.csv`).
 * `御` → `御` (imperial — default), `禦` (defend: 防禦、抵禦).
 * `借` → `借` (borrow — default), `藉` (by means of: 憑藉、藉口；but 借鑑 keeps 借).
+* `奸` → `奸` (treacherous: 奸詐、奸臣 — default), `姦` (illicit sex / rape: 強姦、姦淫). Every occurrence in this book is 強姦 (pinned 强奸→強姦 in `02_vocab_stable.csv`).
+* `托` → `託` (entrust: 委託、託付、白帝城託孤 — default), `托` (hold up / foil / transliteration: 襯托、烘托、托盤、波托菲諾). 波托菲諾 is pinned in `02_vocab_stable.csv`.
+* `钟`(`鍾`) → `鍾` (surname / 鍾情 — default), `鐘` (clock / time: 分鐘、點鐘、鐘錶、鬧鐘).
+* `注` → `注` (pour / focus: 注意、注重、關注 — default), `註` (register / annotate: 註冊、註解、備註). 注冊→註冊 pinned in `02_vocab_stable.csv`.
+* `愈` → `愈` (the more…the more: 愈來愈 — default), `癒` (heal: 治癒、痊癒). 治愈→治癒 pinned in `02_vocab_stable.csv`.
+* `舍` → `舍` (house / proper name: 宿舍、慕舍 — default), `捨` (give up: 捨不得、取捨、捨棄).
+* `赞`(`贊`) → `贊` (support: 贊成、贊助 — default), `讚` (praise / like: 點讚、盛讚、稱讚、讚嘆). Every occurrence in this book is the praise/like sense → 讚.
+* `向` → `向` (direction / toward / tend — default), `嚮` (yearn: 嚮往). 向往→嚮往 pinned in `02_vocab_stable.csv`.
+* `准`(`準`) → `準` (accurate / standard / prepare: 標準、準備、精準 — default), `准` (permit: 批准、准許、准予).
+* `签`(`籤`) → `籤` (lottery / label: 抽籤、標籤、書籤 — default), `簽` (sign: 簽名、簽署、簽下、網簽). Every occurrence in this book is the sign sense → 簽.
+* `徵` → `徵` (levy / sign: 特徵、象徵、徵收 — default), `征` (conquer / journey: 征服、長征、出征).
 
 Settled: the name **李松堅** keeps 松 (not 鬆); it is pinned in `02_vocab_stable.csv`, so just
 confirm the `²`. The words 關係／聯繫／複製／製造 (the 系→係／繫 and 复／制 char defaults are wrong
