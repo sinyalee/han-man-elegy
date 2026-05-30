@@ -2,6 +2,8 @@ Carefully review the latex files. The review target is /text for the original, o
 
 Before the review, read the language instruction in /scripts/languages/[target language] carefully. It holds the language-specific rules (grammar distinctions, punctuation conventions, sensitive-content handling) that this general process defers to.
 
+When the review target is a translation (not the Chinese original), also read the origin-language instruction /scripts/languages/Chinese/prompt.md. It records source-side decisions the translation must preserve — author-coined terms like `保进步守`, intentional stand-ins, and sensitive-content handling — so you don't re-flag a faithful rendering of something deliberate in the source.
+
 # Goal
 
 Typos + light polish, plus the language-specific correctness rules. Do NOT change content, structure, argument, or the author's voice. By default present findings as a list and confirm before editing; only edit directly when asked.

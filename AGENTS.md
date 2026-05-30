@@ -9,7 +9,7 @@
     - Aliases: build, compile, make
 * Release
     - Prompt: release.md
-    - Aliases: release, publish
+    - Aliases: release, publish, build and release, build and publish, release new version
 * Review
     - Prompt: review.md
     - Aliases: review, check, examine, proofread

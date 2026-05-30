@@ -18,15 +18,36 @@ Fix 状语+的→地 and 动词+的+补语→得. Leave genuinely attributive �
 ## 权力 vs 权利
 
 * 权利 = a right / entitlement someone holds (正当防卫权利、追求幸福的权利、没有权利干预)
-* 权力 = authority or force to compel; institutional power (权力斗争、权力和资本勾结)
+* 权力 = authority or force to compel; institutional power, OR coercive leverage over a person (权力斗争、权力和资本勾结、获取诬告权力)
 
-Decide once and apply consistently. In legal / rights passages it is almost always 权利.
+Decide once and apply consistently. In legal / rights passages it is almost always 权利. But coercive leverage is 权力, not 权利 — settled case: `获取诬告权力的控制行为` in chapter_sex is correct as 权力 (the power to control a man via the threat of a false accusation that can jail him, i.e. a force to compel). Do NOT "fix" it to 权利.
+
+## 写到 / 写道 — by register (formal vs casual)
+
+The author distinguishes the two by the register of what is being quoted:
+
+* 写到 — for casual / personal writing being quoted (微信签名, blog posts, personal recollection). E.g. `微信签名写到：…`, `博客文章里面写到，…`, `我当时写到：…`.
+* 写道 — for formal quotations (declarations, formal documents). E.g. `法国大革命的人权宣言写道``人生而自由''`.
+
+Apply this distinction; do NOT blindly normalize one form to the other. Only flag a 写到/写道 if it is on the wrong side of this casual/formal line.
+
+## Emphatic 是 + verb phrase — leave as-is
+
+The author uses an affirmative/emphatic 是 before a verb phrase to assert a state, often with the trailing 的 dropped (e.g. `无论是撤退还是战斗，你都是做好准备`; cf. the parallel `都是非常有利的` in the same paragraph). Do NOT treat 是 + verb phrase as a 病句 (missing 了 / missing 的) and do NOT remove the 是 — keep it.
+
+## Author-coined terms — leave intact (and flag for translators)
+
+The author deliberately coins terms; do NOT "correct" them as 错别字 or 病句. Known coinages:
+
+* `保进步守` — a deliberate wordplay splitting 保守 around 进步, contrasting 进步 (progress) with 保守 (retreating to tradition). Appears in chapter_how (`美国，基本没有保进步守的人`). Leave it untouched. Translators must render the wordplay (the 进步/保守 contrast), not normalize it to plain 保守.
+
+When a review confirms a new author coinage, add it here so future reviews don't re-flag it and translators know to preserve the wordplay.
 
 ## 标点 conventions
 
 * Chinese 破折号 is exactly two characters: —— (not ————).
 * In-line lists use 顿号「、」between items, not commas.
-* Quotation marks must pair correctly; the book body uses LaTeX ``…'' style — keep it consistent and never open with a closing mark (”…”).
+* Quotation marks must pair correctly; the book body uses LaTeX ``…'' style — keep it consistent and never open with a closing mark (”…”). This is a settled, project-wide convention: convert any full-width curly quotes “…” to ``…'' as one mechanical global pass (glyph swap only — `“`→` `` `, `”`→`''`), preserving each quote's existing terminal-punctuation placement.
 * A closing 句号 for a complete quoted sentence goes inside the closing quote; do not trap a 句号 inside 书名号《》 or inside a \hyperref link.
 * Watch 全角/半角 mixing (e.g. a stray half-width space after 数字\%).
 

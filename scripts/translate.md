@@ -10,6 +10,8 @@ If the target folder already exists, you should not restart the translation fres
 
 Before translation, you should carefully review the language instruction in /scripts/languages/[target language]/prompt.md. It may contain special instructions for the target language. If no instruction folder exists yet for this language, the translation can still proceed; consider creating one to capture any durable, language-specific decisions you make so future translations and reviews follow them.
 
+You MUST also read the origin-language instruction /scripts/languages/Chinese/prompt.md (the source for every translation is the Chinese original in /text). It records source-side decisions you must respect — for example author-coined terms like `保进步守` that must be rendered as the intended wordplay rather than "corrected" or normalized, intentional stand-ins, and sensitive-content handling. Where the target-language instruction and the origin-language instruction conflict, the target-language instruction takes precedence.
+
 After the translation, you should carefully review the translation, with the language instruction in mind (this is the review.md process; record any settled language-specific decisions back into the language instruction).
 
 Finally, verify the build compiles: `python3 scripts/build.py --language "[target language]"`. Report any LaTeX/escaping errors rather than leaving them.

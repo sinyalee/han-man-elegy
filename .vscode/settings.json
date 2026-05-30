@@ -11,6 +11,16 @@
     },
     "[latex]": {
         "editor.wordWrap": "on",
-        "editor.fontSize": 16
+        "editor.fontSize": 16,
+        "editor.inlineSuggest.enabled": false
+    },
+    "[markdown]": {
+        "editor.inlineSuggest.enabled": false
+    },
+    "github.copilot.enable": {
+        "*": true,
+        "markdown": false,
+        "latex": false,
+        "tex": false
     }
 }
