@@ -1,23 +1,28 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 r"""
 build.py — full build script for the book (cross-platform: macOS / Linux / Windows).
 
 It will:
   1. Locate the project root automatically (this script lives in scripts/, so the
      root is its parent directory).
-  2. Generate a temporary latexmkrc on the fly (deleted afterwards) and compile
-     with latexmk + xelatex.
-  3. Name the output PDF after the book: the name comes from \bookname in
-     text/config.tex (default "人妻约会指南"). For another language, just change
-     \bookname in config.tex — e.g. set it to "人妻約會指南" and the output becomes
-     "人妻約會指南.pdf", with no change to this script.
-  4. Be "self-contained" by default: clean intermediate files before and after,
-     leaving only that one PDF.
+  2. Pick the source by language: "Simplified Chinese" builds from text/, any other
+     language builds from translations/<language>/ (where the translated source lives).
+  3. Generate a temporary latexmkrc on the fly (deleted afterwards) and compile with
+     latexmk + xelatex.
+  4. Name the PDF after \bookname in the source's config.tex (fallback "book") and keep
+     a copy at the project root. With --release, also publish copies under releases/.
+  5. Be "self-contained" by default: clean intermediates before and after.
+
+Publishing rules (only with --release, after a successful build):
+  - always:                    releases/languages/<language>.pdf
+  - "official" languages*:     releases/<bookname>.pdf
+  - Simplified Chinese only:   releases/versions/<bookname>v<bookversion>.pdf
+  (* official = Simplified Chinese, Traditional Chinese, Japanese, English)
 
 Usage (can be run from any directory):
-    python scripts/build.py            self-contained build
-    python scripts/build.py --keep      keep intermediates and build incrementally
+    python scripts/build.py                        build Simplified Chinese (from text/)
+    python scripts/build.py --language Japanese     build from translations/Japanese/
+    python scripts/build.py --release               build and also publish into releases/
+    python scripts/build.py --keep                  keep intermediates, build incrementally
 On Windows, if `python` is unavailable, try `py scripts/build.py`.
 """
 import argparse
@@ -29,17 +34,24 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import unicodedata
 
 # Project root = the parent of this script's directory (scripts/)
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-MAIN = "text/book.tex"        # main file (relative to root)
-JOB = "book"                  # latexmk job name -> intermediates are all book.*
-CONFIG = "text/config.tex"    # the book name is read from here
-DEFAULT_NAME = "人妻约会指南"   # fallback output name (without extension) if config is unreadable
+JOB = "book"                       # latexmk job name -> intermediates are all book.*
+DEFAULT_NAME = "book"              # fallback output name when \bookname is missing
+DEFAULT_LANGUAGE = "Simplified Chinese"
 
-# ---- Colors: only on an interactive terminal; on Windows try to enable ANSI,
-#      and fall back to plain text if that fails. ----
+# Languages that also get a copy directly under releases/ (canonical spellings).
+OFFICIAL_LANGUAGES = {
+    "simplified chinese": "Simplified Chinese",
+    "traditional chinese": "Traditional Chinese",
+    "japanese": "Japanese",
+    "english": "English",
+}
+
+# ---- colors: only on an interactive terminal; on Windows try to enable ANSI ----
 _color = sys.stdout.isatty()
 if _color and platform.system() == "Windows":
     try:
@@ -54,27 +66,31 @@ def _c(code):
     return code if _color else ""
 
 
-GRN, RED, RST = _c("\033[32m"), _c("\033[31m"), _c("\033[0m")
+GRN, YLW, RED, BLD, RST = (_c("\033[32m"), _c("\033[33m"), _c("\033[31m"),
+                           _c("\033[1m"), _c("\033[0m"))
 
 
 def info(msg):
     print(f"{GRN}==>{RST} {msg}")
 
 
+def warn(msg):
+    print(f"{YLW}warning:{RST} {msg}")
+
+
 def err(msg):
     print(f"{RED}error:{RST} {msg}", file=sys.stderr)
 
 
-def output_name():
-    r"""Read \bookname from text/config.tex as the output name; fall back to default."""
+def read_macro(config_path, macro):
+    r"""Return the value of \newcommand{\<macro>}{...} in a LaTeX file, or None."""
     try:
-        with open(os.path.join(ROOT, CONFIG), encoding="utf-8") as f:
-            m = re.search(r"\\newcommand\*?\s*\{\\bookname\}\s*\{(.+?)\}", f.read())
-            if m:
-                return m.group(1).strip()
+        with open(config_path, encoding="utf-8") as f:
+            pattern = r"\\newcommand\*?\s*\{\\" + re.escape(macro) + r"\}\s*\{(.+?)\}"
+            m = re.search(pattern, f.read())
+            return m.group(1).strip() if m else None
     except OSError:
-        pass
-    return DEFAULT_NAME
+        return None
 
 
 def tex_install_help():
@@ -105,30 +121,78 @@ def make_latexmkrc():
     return path
 
 
-def clean():
-    """Remove intermediate files (leaves the final PDF untouched)."""
-    subprocess.run(["latexmk", "-c", MAIN],
+def clean(srcdir):
+    """Remove intermediate files (leaves any .pdf in place)."""
+    subprocess.run(["latexmk", "-c", f"{srcdir}/book.tex"],
                    stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    for f in glob.glob("text/*.aux"):              # .aux files \include creates under text/
+    for f in glob.glob(f"{srcdir}/*.aux"):     # .aux files \include creates in the source dir
         try:
             os.remove(f)
         except OSError:
             pass
-    if os.path.exists(JOB + ".pdf"):               # intermediate PDF under the ASCII job name
-        os.remove(JOB + ".pdf")
+
+
+def publish(src_pdf, dest):
+    """Copy src_pdf to dest, creating parent dirs and overwriting any (read-only) existing file."""
+    os.makedirs(os.path.dirname(dest) or ".", exist_ok=True)
+    if os.path.exists(dest):
+        try:
+            os.remove(dest)
+        except OSError:
+            pass
+    shutil.copyfile(src_pdf, dest)
+    return dest
+
+
+def _dwidth(s):
+    """Display width counting CJK characters as 2 columns (for aligned output)."""
+    return sum(2 if unicodedata.east_asian_width(c) in "WF" else 1 for c in s)
+
+
+def print_summary(language, srcdir, bookname, version, produced):
+    line = "-" * 64
+    width = max(_dwidth(p) for p, _ in produced)
+    print()
+    print(f"{GRN}{line}{RST}")
+    print(f"{BLD}  Build complete{RST}")
+    print(f"  Language : {language}")
+    print(f"  Source   : {srcdir}/")
+    print(f"  Book     : {bookname}" + (f"   (version {version})" if version else ""))
+    print("  Outputs  :")
+    for path, label in produced:
+        pad = " " * (width - _dwidth(path))
+        print(f"    {path}{pad}   {label}")
+    print(f"{GRN}{line}{RST}")
 
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Build the book PDF with latexmk + xelatex.")
+        description="Build the book PDF with latexmk + xelatex, and publish to releases/.")
+    parser.add_argument("--language", default=DEFAULT_LANGUAGE,
+                        help='language to build (default "Simplified Chinese"); other '
+                             'languages build from translations/<language>/')
+    parser.add_argument("--release", action="store_true",
+                        help="also publish copies into releases/ (by default only a local PDF is built)")
     parser.add_argument("--keep", action="store_true",
                         help="keep intermediate files and build incrementally (faster, for debugging)")
     args = parser.parse_args()
 
     os.chdir(ROOT)
 
-    if not os.path.isfile(MAIN):
-        err(f"cannot find {MAIN} under project root {ROOT}.")
+    # Normalize the language: canonical spelling for the official ones, as-typed otherwise.
+    lang_key = args.language.strip().lower()
+    language = OFFICIAL_LANGUAGES.get(lang_key, args.language.strip())
+    is_simplified = lang_key == DEFAULT_LANGUAGE.lower()
+
+    srcdir = "text" if is_simplified else f"translations/{language}"
+    main_tex = f"{srcdir}/book.tex"
+    config_tex = f"{srcdir}/config.tex"
+
+    if not os.path.isfile(main_tex):
+        err(f"source not found: {main_tex}")
+        if not is_simplified:
+            print(f"  Put the {language} translation under {srcdir}/ first "
+                  f"(mirroring the text/ folder, including a config.tex).")
         sys.exit(1)
 
     missing = [t for t in ("latexmk", "xelatex") if shutil.which(t) is None]
@@ -137,34 +201,63 @@ def main():
         tex_install_help()
         sys.exit(1)
 
-    out_pdf = output_name() + ".pdf"
+    bookname = read_macro(config_tex, "bookname")
+    if not bookname:
+        warn(rf"no \bookname found in {config_tex}; using '{DEFAULT_NAME}'. "
+             rf"Please set \bookname in the source.")
+        bookname = DEFAULT_NAME
+    version = read_macro(config_tex, "bookversion")
+
     rc = make_latexmkrc()
     try:
         if not args.keep:
             info("Cleaning old intermediate files...")
-            clean()
+            clean(srcdir)
 
-        info("Building with latexmk (runs xelatex as many times as needed)...")
-        code = subprocess.run(["latexmk", "-r", rc, MAIN]).returncode
+        info(f"Building {BLD}{language}{RST} from {srcdir}/ (latexmk + xelatex)...")
+        code = subprocess.run(["latexmk", "-r", rc, main_tex]).returncode
         if code != 0:
             err(f"build failed; {JOB}.log was kept for inspection. If a package is missing:")
             print("  - TeX Live / MacTeX:  sudo tlmgr install <package>")
             print("  - MiKTeX (Windows):   usually auto-installs, or use the MiKTeX Console")
             sys.exit(1)
 
-        if not os.path.exists(JOB + ".pdf"):
-            err(f"build finished but {JOB}.pdf is missing; cannot produce {out_pdf}.")
+        built = JOB + ".pdf"
+        if not os.path.exists(built):
+            err(f"build finished but {built} is missing.")
             sys.exit(1)
-        shutil.copyfile(JOB + ".pdf", out_pdf)     # produce the book-named final PDF
+
+        # ---- local output (always) ----
+        produced = []
+        local_pdf = f"{bookname}.pdf"
+        if local_pdf != built:
+            shutil.copyfile(built, local_pdf)
+        produced.append((local_pdf, "local build output (project root)"))
+
+        # ---- publish to releases/ (opt-in via --release) ----
+        if args.release:
+            produced.append((publish(built, f"releases/languages/{language}.pdf"),
+                             "by language"))
+            if lang_key in OFFICIAL_LANGUAGES:
+                produced.append((publish(built, f"releases/{bookname}.pdf"),
+                                 "official release"))
+            if is_simplified:
+                if version:
+                    produced.append((publish(built, f"releases/versions/{bookname}v{version}.pdf"),
+                                     "version archive"))
+                else:
+                    warn(rf"no \bookversion in {config_tex}; skipping the releases/versions/ copy.")
 
         if not args.keep:
             info("Cleaning intermediate files...")
-            clean()
+            clean(srcdir)
+            if local_pdf != built and os.path.exists(built):
+                os.remove(built)        # drop the raw intermediate; keep the named output
 
-        info(f"Build complete! Output: {os.path.join(ROOT, out_pdf)}")
+        print_summary(language, srcdir, bookname, version, produced)
     finally:
         try:
-            os.remove(rc)                          # delete the temporary latexmkrc
+            os.remove(rc)               # delete the temporary latexmkrc
         except OSError:
             pass
 
