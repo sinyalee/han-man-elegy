@@ -1,3 +1,5 @@
+This README file is for humans. Read [AI.md](AI.md) if you are an AI.
+
 # 人妻约会指南
 
 ## 下载电子书

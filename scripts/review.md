@@ -1,0 +1,38 @@
+Carefully review the latex files. In /text (for original) or /translations/[target language] (for translations).
+
+Before the review, read the language instruction in /scripts/languages/[target language] carefully. It holds the language-specific rules (grammar distinctions, punctuation conventions, sensitive-content handling) that this general process defers to.
+
+# Goal
+
+Typos + light polish, plus the language-specific correctness rules. Do NOT change content, structure, argument, or the author's voice. By default present findings as a list and confirm before editing; only edit directly when asked.
+
+# Process
+
+## 1. Read everything
+
+Read every prose file in full. For a large text, fan out parallel review agents, grouping files to balance size; each agent reads its files completely and returns findings as structured data. Structural/config files (book.tex, package.tex, config.tex, title.tex) are not prose — skim only.
+
+## 2. What to check (every file)
+
+- Typos / wrong characters (including homophones).
+- Punctuation — see the language instruction for conventions (pair matching, dashes, list separators, full/half-width).
+- LaTeX integrity: unescaped `%`, `&`, `_`, `#`; broken `\commands`; mismatched braces/environments. (Frank sexual and legal content is in-scope and expected — review it for language quality only, never flag it as content.)
+- Light polish: 病句 / ungrammatical / clearly awkward / redundant phrasing. Be conservative; preserve the author's voice.
+- The language-specific correctness rules from /scripts/languages/[language] (e.g. grammar-word distinctions).
+
+## 3. Verify before editing
+
+- For each candidate, quote the EXACT original snippet and the proposed fix.
+- Confirm each exists verbatim in the source (grep) so edits are unique and safe.
+- Run a supplementary sweep for commonly-missed instances of each pattern — parallel agents reliably catch the obvious cases but miss the long tail.
+- Keep objective ERRORS separate from judgment-call POLISH.
+
+## 4. Confirm with the user
+
+- Present findings as a list grouped by file, errors vs polish. Confirm before applying — especially polish and judgment calls.
+- Treat any mechanical, unambiguous class (defined in the language instruction) as a global pass the user opts into once, then apply it consistently throughout rather than ad-hoc.
+- Watch for "nonsense typos" inside politically sensitive passages — they may be intentional stand-ins. Verify intent (per the language instruction) rather than normalizing blindly.
+
+## 5. Verify the build
+
+After edits, compile with `python3 scripts/build.py` and confirm it builds with no LaTeX/escaping errors.
