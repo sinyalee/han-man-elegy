@@ -1,7 +1,7 @@
 This is the original, uncensored "Chinese" version, kept in /text. It is the source for all translations and for the censored "Simplified Chinese" derivative. The censorship transforms live ONLY in /scripts/languages/Simplified Chinese — do NOT apply them here. In the Chinese version, keep the real names and real references:
 
 * Real names: "陈良宇", "蒋超良" (not the censored "陈ら宇" / "蒋超ら").
-* Real references to sensitive events, e.g. "六四事件" (not the censored stand-in "几十年前之后").
+* Real references to sensitive events, e.g. "六四事件" (not the censored stand-in "几十年前").
 
 # Review rules specific to Chinese
 

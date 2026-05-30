@@ -33,6 +33,13 @@ Read every prose file in full. For a large text, fan out parallel review agents,
 - Treat any mechanical, unambiguous class (defined in the language instruction) as a global pass the user opts into once, then apply it consistently throughout rather than ad-hoc.
 - Watch for "nonsense typos" inside politically sensitive passages — they may be intentional stand-ins. Verify intent (per the language instruction) rather than normalizing blindly.
 
-## 5. Verify the build
+## 5. Record settled decisions in the language instruction
 
-After edits, compile with `python3 scripts/build.py` and confirm it builds with no LaTeX/escaping errors.
+When a review resolves a recurring judgment call or chooses a convention (a grammar distinction, a punctuation rule, a term spelling, an intentional sensitive-content stand-in to leave alone), write it into `/scripts/languages/[target language]/prompt.md` so future reviews follow it instead of re-raising the same question. Only record durable, project-wide decisions — not one-off fixes. Phrase each as a rule the next reviewer can apply mechanically.
+
+## 6. Verify the build
+
+After edits, compile and confirm it builds with no LaTeX/escaping errors. Pass the language being reviewed to the build script:
+
+* Original Chinese (/text): `python3 scripts/build.py`
+* A translation (/translations/[target language]): `python3 scripts/build.py --language "[target language]"`

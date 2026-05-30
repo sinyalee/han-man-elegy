@@ -1,1 +1,17 @@
-First read releases/README.md to understand the structure of the released PDF files. If the requested release PDF does exist, give it to the user. If not, ask the user if they want to generate it by translate, and build and release commands.
+Give the user a released PDF.
+
+First read releases/README.md to understand the structure of the released PDF files. Then locate the release the user asked for:
+
+* A translation / language version → `releases/languages/<language>.pdf`
+* The original (uncensored) Chinese → `releases/Original.pdf`
+* A historic version → `releases/versions/人妻约会指南v<version>.pdf`
+* The latest canonical version → `releases/人妻约会指南.pdf`
+
+If the requested PDF exists, give it to the user — provide the path as a clickable link.
+
+If it does not exist, ask the user whether they want to generate it. Generating a language version means running the commands in order:
+
+1. Translate (translate.md) to produce /translations/<language>/, if it isn't there yet.
+2. Release (release.md): `python3 scripts/build.py --release --language "<language>"`
+
+Do not generate without confirming with the user first.
