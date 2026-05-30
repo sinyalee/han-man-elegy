@@ -1,4 +1,4 @@
-This README file is for humans. Read [AI.md](AI.md) if you are an AI.
+This README file is for humans. Read [AGENTS.md](AGENTS.md) if you are an AI.
 
 # 人妻约会指南
 
