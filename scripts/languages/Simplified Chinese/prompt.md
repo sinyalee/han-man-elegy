@@ -87,7 +87,13 @@ silently swapping or leaving it; record each settled decision as a `censor.csv` 
 it is a judgment principle, here under "Settled").
 
 The substitutions are **deliberate stand-ins, not typos** — a wording review must not "fix"
-them back, and must leave the author's own `\_\_` redactions untouched.
+them back.
+
+The author's own explicit `\_\_` redactions have been **recovered in full in `/text`** (so
+`Original.pdf` carries the complete text) and **re-blanked here via `censor.csv` rules** whose
+`target` restores the `\_\_` (the discreet form for the Mainland release). When the original
+text around one of these passages is edited, update the matching rule's `origin` so the blank
+still lands in the right place — do not hand-edit the generated `.tex`.
 
 # Settled — do not re-raise
 
@@ -98,6 +104,10 @@ unless the surrounding original text is edited:
 * The author's own social critique (e.g. system-as-prison / 劳改 metaphors) and rhetorical
   passages — these are the author's voice, not banned references.
 * The mention of being detained by the cyber-police (`网警`) / a `公安二代` jab — kept.
+* The explicit `\_\_` passages recovered in `/text` (preface 性爱细节, `chapter_sex` 性爱的过程,
+  `appendix_articles` 李松坚) are re-blanked here only — sex content otherwise stays. These are
+  encoded as `censor.csv` rules that restore the `\_\_`; no further review needed unless the
+  surrounding original is edited.
 
 Add to this list whenever a future review settles on keeping a new borderline passage, so it
 is not re-examined every run.
