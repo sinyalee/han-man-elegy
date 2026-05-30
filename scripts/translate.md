@@ -6,6 +6,12 @@ The original folder is /text. The folder contains original latex files in Chines
 
 The target folder is /translations/[target language]. You should mirror the file structure in the original folder. After translation, you copy the original folder to [target folder]/original. This way we know the translation source of the current translation.
 
+`book.tex` is the structural entry point and is copied verbatim from /text, where its `\input`/`\include` paths point at `text/...`. The build always runs from the repo root, so a translation's `book.tex` must point at its OWN folder instead — otherwise it pulls in the original /text files (the build will appear to "succeed" but actually compile the source language). You MUST therefore run the retarget script on the target `book.tex` **every time you create or update a translation** — it is idempotent and leaves `\includegraphics{figures/...}` alone, so running it again when it is already correct is harmless:
+
+    python3 scripts/retarget_includes.py "translations/[target language]/book.tex"
+
+Run it as the last step before building, on a fresh translation and on every incremental update alike (in particular whenever `book.tex` was (re)written from /text — e.g. by `convert.py`'s seed/`--force`/`--update`, or by copying it over by hand). When in doubt, just run it: being idempotent, the only thing it can do is fix a wrong path.
+
 If the target folder already exists, you should not restart the translation freshly. Instead, compare the updates of /text with the older version of /text in [target folder]/original, then update the translation accordingly. The old version of translation may be edited by humans before and contains some decisions made by humans. Don't update those. After updating the translation, you should also update [target folder]/original to the new orignal version.
 
 Before translation, you should carefully review the language instruction in /scripts/languages/[target language]/prompt.md. It may contain special instructions for the target language. If no instruction folder exists yet for this language, the translation can still proceed; consider creating one to capture any durable, language-specific decisions you make so future translations and reviews follow them.

@@ -62,6 +62,9 @@ TEXT = os.path.join(ROOT, "text")
 OUT = os.path.join(ROOT, "translations", "Simplified Chinese")
 CSV = os.path.join(HERE, "censor.csv")
 
+sys.path.insert(0, os.path.join(ROOT, "scripts"))
+from retarget_includes import retarget   # noqa: E402
+
 OK, BAD = "✓", "✗"   # ✓ ✗
 
 
@@ -131,6 +134,10 @@ def main():
                 f.write(result)
 
     if write:
+        # book.tex is copied verbatim from /text and still points at text/...; aim its
+        # \include/\input at this folder so the censored .tex are the ones that build.
+        retarget(os.path.join(OUT, "book.tex"))
+
         orig = os.path.join(OUT, "original")               # source-revision snapshot
         if os.path.isdir(orig):
             shutil.rmtree(orig)
