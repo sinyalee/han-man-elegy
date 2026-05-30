@@ -2,8 +2,7 @@
 
 ## 下载电子书
 
-[点击这里下载最新版电子书](releases/人妻约会指南v1.5.pdf)
-(最新版本：2025年11月11日 第一版v1.5)
+[点击这里下载最新版电子书](releases/人妻约会指南.pdf)
 
 ## 版权、翻译和二创
 
@@ -35,11 +34,7 @@
 
 ### 本地编译
 
-首先确保你的机器安装了Python 3，然后运行以下命令：
-
-```bash
-python3 compile.py
-```
+首先确保你的机器安装了新版Python 3，然后运行`python3 compile.py`（Linux/MacOS）或者`python compile.py`（Windows）。
 
 ### Overleaf编译
 
