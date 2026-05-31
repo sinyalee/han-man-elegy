@@ -7,15 +7,6 @@
 \usepackage{graphicx}                                   % 支持插图,图形宏包graphics的扩展宏包
 \usepackage{float}                                      % 提供 [H] 浮动体精确定位（图片用），原先由 minted 间接引入
 
-% --- Vertical page filling --------------------------------------------------
-% Use \raggedbottom so LaTeX never stretches inter-paragraph / around-figure
-% spacing to force a page down to the bottom margin. Content packs naturally at
-% the top of each page and any leftover space falls at the page bottom. This
-% keeps figures snug against their text and in source order, and stops the
-% scattered gaps that \flushbottom (the book-class default) opens up around
-% images whenever text length shifts between versions and translations.
-\raggedbottom
-% ---------------------------------------------------------------------------
 \usepackage{color}                                      % 支持彩色
 \usepackage[dvipsnames]{xcolor}
 \usepackage{amscd}
@@ -35,3 +26,5 @@
     colorlinks=true,
     linkcolor=Blue,
 }
+
+\raggedbottom
