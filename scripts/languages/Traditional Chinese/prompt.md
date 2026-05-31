@@ -50,9 +50,15 @@ say so in its `explain` so the reviewer confirms the `²`/`³` rather than trust
 
 # Settled conventions (do not re-litigate)
 
-* **Characters: OpenCC standard / mainland-traditional; no Taiwan/HK glyph pass.** Keep `爲`
-  (not 為), `裏` (not 裡), the particle `着` (接着、看着; 著 still appears in 著名／著作), `麪`
-  (not 麵). Regional choices happen only at the word level, via the change table.
+* **Characters: OpenCC standard, with the Taiwan-variant glyph overlay for the more widely-used
+  forms** — `為` (not 爲), `麵` (not 麪), `床` (not 牀), `群` (not 羣), `眾` (not 衆), `偽` (not 僞),
+  `吃` (not 喫), `啟` (not 啓), `峰` (not 峯). This is baked into `01_characters.csv` by
+  `build_tables.py` (OpenCC `TWVariants`; see `tables/SOURCES.md`), so it applies automatically —
+  you should not see those orthodox forms in a fresh conversion. **Exceptions kept in standard
+  form** (the `KEEP_STANDARD` set in `build_tables.py`): `裏` (not 裡), the particle `着`
+  (接着、看着; 著 still appears in 著名／著作), `污` (not 汙), `泄` (not 洩), `檐` (not 簷), `睾`
+  (not 睪), `棱` (not 稜). Further regional choices happen only at the word level, via the change table. Do
+  **not** apply OpenCC's `HKVariants` (説／温／户-style HK glyphs) — those are less widely understood.
 * **Vocabulary: pick the most widely understood form, not the Taiwan-specific one (the "2-of-3"
   rule).** For a word that differs across mainland / Hong Kong / Taiwan, choose the form current
   in **at least two** of the three regions. So a Taiwan-only word reverts to the mainland/HK-shared
@@ -114,7 +120,7 @@ are the ones whose non-default form really occurs in this book — pick by sense
 * `干` → `幹` (do / trunk: 幹活、樹幹), `乾` (dry: 乾淨、乾杯), `干` (shield: 干戈、干預).
 * `后` → `後` (after / behind — almost always), `后` (sovereign / queen: 皇后、太后、皇天后土、蜂后 queen bee).
 * `里` → `裏` (inside — default here), `里` (li-unit 公里, place/surnames 故里、里長).
-* `面` → `面` (face / side — default), `麪` (flour / noodles: 麪條、麪粉).
+* `面` → `面` (face / side — default), `麵` (flour / noodles: 麵條、麵粉).
 * `发` → `發` (emit / happen: 發生、發布), `髮` (hair: 頭髮、理髮).
 * `表` → `表` (surface / table — default), `錶` (watch: 手錶、鐘錶).
 * `松` → `松` (pine / **the name 李松堅** — default, correct), `鬆` (loose: 輕鬆、放鬆).
