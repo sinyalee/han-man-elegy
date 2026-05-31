@@ -39,7 +39,7 @@ convert.py reads only `sc,chosen`; `explain` is documentation for the reviewer (
 
 * **stable** = keep the standard/mainland form (比特币 → 比特幣, 万象城 → 萬象城, the name
   李松坚 → 李松堅). Pinning the full word also resolves an ambiguous character inside it (万 → 萬).
-* **change** = use a different TC form (软件 → 軟體, 计算机科学 → 電腦科學).
+* **change** = use a different TC form (视频 → 影片, 内存 → 記憶體) — see the word-choice rule below for when a change is warranted.
 
 **Only table a word whose source has one meaning.** A table entry hits every occurrence, so a
 context-dependent word must stay out and be reviewed per spot: 对象 (partner vs. object),
@@ -53,6 +53,29 @@ say so in its `explain` so the reviewer confirms the `²`/`³` rather than trust
 * **Characters: OpenCC standard / mainland-traditional; no Taiwan/HK glyph pass.** Keep `爲`
   (not 為), `裏` (not 裡), the particle `着` (接着、看着; 著 still appears in 著名／著作), `麪`
   (not 麵). Regional choices happen only at the word level, via the change table.
+* **Vocabulary: pick the most widely understood form, not the Taiwan-specific one (the "2-of-3"
+  rule).** For a word that differs across mainland / Hong Kong / Taiwan, choose the form current
+  in **at least two** of the three regions. So a Taiwan-only word reverts to the mainland/HK-shared
+  form (互联网 → 互聯網 not 網際網路; 软件 → 軟件 not 軟體; 网络 → 網絡; 概率 not 機率; 代码 →
+  代碼 not 程式碼), and a mainland-only word gives way to the HK+Taiwan-shared form (内存 → 記憶體
+  not 內存; 硅 → 矽; 链接 → 連結; 视频 → 影片; 哈希 → 雜湊; 程序员 → 程式設計師).
+  If **all three differ**, there is no mechanical rule — defer to the author's editorial choice and
+  record it (it reflects personal taste, not any one region's standard). Settled calls: 博客 → 網誌
+  (HK), 笔记本电脑 → 手提電腦 (HK), 短信 → 短訊 (HK), 出租车 → 計程車 (TW).
+  A word that needs a non-default form is recorded in `03_vocab_change.csv`; one whose default
+  conversion is already the right form needs no entry.
+* **Brand names: render in whichever form is conventionally dominant in TW/HK writing.**
+  Latin when the Latin name dominates everyday TW/HK usage — 谷歌 → Google, 英伟达 → NVIDIA
+  (not 輝達), 索尼 → Sony (consumer/gaming usage; pairs with the Latin PS2, though 索尼 is the
+  official Chinese name). Chinese when a dominant established Chinese name exists — 亚马逊 → 亞馬遜,
+  微软 → 微軟, 苹果 → 蘋果, 星巴克 → 星巴克, 法拉利 → 法拉利, 丰田 → 豐田, 日产 → 日產, 比特币 →
+  比特幣. For a brand kept in Chinese whose regional names differ, add a footnote at the first
+  appearance — 奔驰 → 奔馳 (footnote: TW 賓士／HK 平治, Mercedes-Benz).
+* **计算机 → 電腦** (the widely-understood word; 計算機 reads as "calculator" in TW). The author
+  uses 計算機／計算機競賽 as understandable stand-ins for the real field name 信息學, so render
+  the word as 電腦 throughout (電腦競賽、電腦奧賽、電腦奧林匹克競賽、理論電腦). **Two exceptions:**
+  keep 計算機 in the proper program name **計算機科學實驗班** (Tsinghua's Yao Class), and leave
+  **信息學** untouched wherever it appears (信息學（電腦）奧林匹克競賽).
 * **Quotes: corner brackets 「…」 outer, 『…』 nested** (convert.py rewrites ``` ``…'' ``` and
   `` `…' `` by depth). Do not reintroduce ``` `` `` ``` or curly “ ”. A 句號 closing a full
   quoted sentence goes inside 」.

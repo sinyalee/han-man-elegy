@@ -1,7 +1,21 @@
 sc,chosen,explain
 李松坚,李松堅,"author's father's name; 松 stays 松 (the name), not 鬆"
 比特币,比特幣,Bitcoin
+互联网,互聯網,"the Internet; keep the region-neutral 互聯網 (HK/Macau/general traditional, the default char conversion) — do NOT drift to Taiwan's 網際網路"
 万象城,萬象城,"MixC, the mall name; 万→萬"
+奔驰,奔馳,"Mercedes-Benz (car brand); keep mainland 奔馳 (the default char conversion), not TW 賓士 / HK 平治. A footnote at the first appearance (chapter_why) gives the regional names"
+计算机科学实验班,計算機科學實驗班,"Tsinghua's Yao Class (proper program name); keeps 計算機, overriding the 计算机→電腦 change. Works because convert.py is longest-match: this 8-char stable phrase is matched before the 3-char 计算机"
+苹果,蘋果,"Apple (company / fruit); pins 苹→蘋 (the apple sense)"
+丰田,豐田,"Toyota (car brand); pins 丰→豐"
+马斯克,馬斯克,"(Elon) Musk; pins 克, not 剋"
+布朗,布朗,"Brown (University / surname); pins 布 (cloth sense), not 佈"
+星巴克,星巴克,"Starbucks; pins 克, not 剋"
+坦克,坦克,"Tank (the 坦克300 car brand; also the common word 'tank'); pins 克 — single-sense conversion"
+凌菲菲,凌菲菲,"recurring character name (29×); pins 凌, not the variant 淩"
+慕舍,慕舍,"靜安·慕舍 (Shanghai development name); pins 舍 (house sense), not 捨"
+徐汇,徐匯,"Xuhui (Shanghai district); pins 汇→匯 (converge sense), not 彙"
+白云,白雲,"Baiyun (Guangzhou airport / district); pins 云→雲 (cloud sense), not the 'say' sense 云"
+衍复,衍復,"Yanfu Investment (hedge fund); author confirms 衍復 — pins 复→復, not 複/覆"
 关系,關係,relation/relationship; pins 係 (not the system-sense 系)
 联系,聯繫,to contact; pins 繫 (not 系)
 复制,複製,to copy; pins 複+製
