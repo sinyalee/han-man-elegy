@@ -1,5 +1,7 @@
 # Han Man Elegy
 
+Latest SC Version: [releases/人妻约会指南.pdf](releases/人妻约会指南.pdf)
+
 ## About the Book
 
 This is the GitHub project for Sinya Lee's original book Han Man Elegy. The book's original Simplified Chinese version is titled Married Women Dating Guide (人妻约会指南, the SC book). The SC book was release to public domain on Oct 31, 2025 and become one of the most popular Chinese book in history. It is constantly ranked at top 5 in zlibrary.

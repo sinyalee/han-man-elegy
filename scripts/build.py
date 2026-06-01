@@ -14,11 +14,12 @@ It will:
   5. Be "self-contained" by default: clean intermediates before and after.
 
 Publishing rules (only with --release, after a successful build):
-  - always:                    releases/languages/<language>.pdf
-  - "official" languages*:     releases/<bookname>.pdf  (Simplified Chinese = the canonical one)
-  - Chinese (original):        releases/Original.pdf    (renamed, so it doesn't collide)
-  - Chinese (original) only:   releases/versions/<bookname>v<bookversion>.pdf
-  (* official = Chinese, Simplified Chinese, Traditional Chinese, Japanese, English)
+  - always:                       releases/languages/<language>.pdf
+  - Simplified Chinese & English: releases/<bookname>.pdf  (top-level canonical copy)
+  - Simplified Chinese only:      releases/cn_versions/<bookname>v<bookversion>.pdf
+  - English only:                 releases/en_versions/<bookname>v<bookversion>.pdf
+  (The uncensored Chinese original and any other language get the languages/ copy only —
+   no top-level copy and no versioned archive.)
 
 Usage (can be run from any directory):
     python scripts/build.py                                 build Chinese, the original (from text/)
@@ -47,7 +48,7 @@ JOB = "book"                       # latexmk job name -> intermediates are all b
 DEFAULT_NAME = "book"              # fallback output name when \bookname is missing
 DEFAULT_LANGUAGE = "Chinese"       # the original, uncensored version; builds from text/
 
-# Languages that also get a copy directly under releases/ (canonical spellings).
+# Canonical spellings used to normalize the --language value.
 OFFICIAL_LANGUAGES = {
     "chinese": "Chinese",
     "simplified chinese": "Simplified Chinese",
@@ -246,18 +247,21 @@ def main():
         if args.release:
             produced.append((publish(built, f"releases/languages/{language}.pdf"),
                              "by language"))
-            if lang_key in OFFICIAL_LANGUAGES:
-                # The censored Simplified Chinese is the canonical <bookname>.pdf; the
-                # uncensored original is published as Original.pdf so the two don't collide.
-                release_name = "Original" if is_original else bookname
-                produced.append((publish(built, f"releases/{release_name}.pdf"),
-                                 "official release"))
-            if is_original:
+            # Only the censored Simplified Chinese (the canonical version) and English get
+            # a top-level <bookname>.pdf and a versioned archive; the uncensored Chinese
+            # original and any other language get the languages/ copy only.
+            archive_dir = {
+                "simplified chinese": "cn_versions",
+                "english": "en_versions",
+            }.get(lang_key)
+            if archive_dir:
+                produced.append((publish(built, f"releases/{bookname}.pdf"),
+                                 "top-level release"))
                 if version:
-                    produced.append((publish(built, f"releases/versions/{bookname}v{version}.pdf"),
+                    produced.append((publish(built, f"releases/{archive_dir}/{bookname}v{version}.pdf"),
                                      "version archive"))
                 else:
-                    warn(rf"no \bookversion in {config_tex}; skipping the releases/versions/ copy.")
+                    warn(rf"no \bookversion in {config_tex}; skipping the releases/{archive_dir}/ copy.")
 
         if not args.keep:
             info("Cleaning intermediate files...")
