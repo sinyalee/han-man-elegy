@@ -1,45 +1,37 @@
-# 人妻约会指南
+# Han Man Elegy
 
-## 下载电子书
+## About the Book
 
-下载最新版电子书：[人妻约会指南.pdf](releases/人妻约会指南.pdf)
+This is the GitHub project for Sinya Lee's original book Han Man Elegy. The book's original Simplified Chinese version is titled Married Women Dating Guide (人妻约会指南, the SC book). The SC book was release to public domain on Oct 31, 2025 and become one of the most popular Chinese book in history. It is constantly ranked at top 5 in zlibrary.
 
-## 版权、翻译和二创
+## Repository Structure
 
-### 版权
+You can find LaTeX sources under [text](text). The main part is written in Simplified Chinese but some sections are written in English (for the Han Man Elegy, the International version). This folder is consider the source of truth for all language versions.
 
-作者李新野（Sinya Lee）自愿通过CC0协议（Creative Common Zero）放弃所有版权。此放弃版权的行为不可撤销。本文及源代码在美国、中国和全球所有国家均永久属于公有领域。
+The formatting and translation software is under [scripts](scripts).
 
-### 维护
+The LaTex sources for each language version is under [translations](translations).
 
-本repo由李新野维护，其他人如果需要提交修改建议，可以新建issue或者提交pull request。如果你对本版本不满意，可以随时fork本repo建立你自己的版本。
+All released PDFs are under [releases](releases).
 
-### 翻译
+## About the Software
 
-本repo仅维护简体中文原版，希望大家能够帮忙把本文翻译为其他语言。现在AI翻译的水平非常高（，毕竟现在的大语言模型一开始就是为了解决翻译问题）。所以即使大家外语水平普通，也可以在AI的帮助下翻译。
+And I created a small software automate the formatting, building, translation and localization process. The software is written in Python and natural language AI prompts. I found this software extremely interesting as it utilizes natural languages as a programming language, and utilize AI agents as intepreters or execution engines. Thus I share it for learning and research purposes.
 
-翻译的时候可以直接fork本repo源代码。如果想要把你的翻译版本放到作者个人博客，可以电邮作者: sinyaleesf@gmail.com
+## Copyright Notice
 
-作者提供的繁体版本（不再维护）：[https://sinyalee.com/blog/?p=1072](https://sinyalee.com/blog/?p=1072)
+### The Simplified Chinese Book
 
-### 二创
+The original Simplified Chinese book, Married Women Dating Guide (人妻约会指南), is dedicated to public domain via CC0 1.0 Creative Commons License. License: [releases/versions/LICENSE](releases/versions/LICENSE)
 
-书中所有故事，都可以随意改编二创。言情小说、galgame、电影、电视剧，体裁不限。
+### The Translation Software
 
-### 盈利
+The translation and formatting software is shared via BUSL-1.1 Business Source License. License: [scripts/LICENSE](scripts/LICENSE)
 
-所有翻译、二创作者都拥有衍生作品的版权。可以使用衍生作品盈利。
+### English Translation and Beyond
 
-## 编译方式
+The author Sinya Lee reserves all rights on everything else in this repository, including but not limit to the English version of the book, Han Man Elegy, and the Book in all other languages other than Simplified Chinese. Copyright Notice: [LICENSE](LISENSE)
 
-### 本地编译
+## For AI Agents
 
-首先确保你的机器安装了新版Python 3，然后运行`python3 scripts/build.py`（Linux/MacOS）或者`python scripts/build.py`（Windows）。
-
-### Overleaf编译
-
-如果你不熟悉AI智能体，可以直接将项目上传至Overleaf，将主文档（Main document）设为 `text/book.tex`，再将编译器更换成XeLaTeX即可编译。
-
-## For AIs
-
-This README file is for humans. Read [AGENTS.md](AGENTS.md) if you are an AI.
+This README file is for humans. Read [AGENTS.md](AGENTS.md) if you are an AI agent.
