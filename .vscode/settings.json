@@ -1,3 +1,26 @@
 {
-    "workbench.colorTheme": "Visual Studio Light"
+    "workbench.colorTheme": "Visual Studio Light",
+    "pylint.enabled": false,
+    "flake8.enabled": false,
+    "autopep8.args": [
+        "--max-line-length=200"
+    ],
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.autopep8",
+        "editor.wordWrap": "off"
+    },
+    "[latex]": {
+        "editor.wordWrap": "on",
+        "editor.fontSize": 16,
+        "editor.inlineSuggest.enabled": false
+    },
+    "[markdown]": {
+        "editor.inlineSuggest.enabled": false
+    },
+    "github.copilot.enable": {
+        "*": true,
+        "markdown": false,
+        "latex": false,
+        "tex": false
+    }
 }
