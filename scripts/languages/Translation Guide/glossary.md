@@ -122,7 +122,7 @@ The **English** column gives the recommended English rendering and the settled c
 | 美国纽约 | New York, USA | Where several essays were written. Standard: New York. |
 | 曼哈顿 | Manhattan | Dateline of one essay ('写于曼哈顿'). Standard: Manhattan. |
 | 东京 | Tokyo | Author proposes living in Tokyo; also pun source for '东京粿'. Standard: Tokyo. Note the parenthetical 港区以外 = 'outside Minato Ward'. |
-| 港区 | Minato Ward | In '东京（港区以外）' = Tokyo outside Minato Ward; pricey central Tokyo district. Standard: Minato Ward (Tokyo). |
+| 港区 | Minato Ward | In '东京（港区以外）' = Tokyo outside Minato Ward (港区) — one of Tokyo's 23 special wards (特別区) and among the priciest central districts (Roppongi/Azabu/Akasaka). Render 'Minato Ward': the ward officially brands its English name 'Minato City', but use 'Ward' (City is ambiguous). In a Japanese translation keep 港区. |
 | 大阪 | Osaka | Standard: Osaka. |
 | 香港 | Hong Kong | Standard: Hong Kong. |
 | 河内 | Hanoi | Glossed in footnote: 东京（河内）= the old name for Hanoi/Tonkin, basis of '东京粿'. Standard: Hanoi. |
@@ -308,14 +308,14 @@ The **English** column gives the recommended English rendering and the settled c
 | 坦克300 | Tank 300 | Great Wall WEY/Tank SUV. Keep 'Tank 300'. |
 | 丰田花冠 | Toyota Corolla | 花冠 = the Corolla (older Chinese name). Established English: Toyota Corolla. |
 | 奔驰S级 | Mercedes-Benz S-Class | The luxury end of the analogy. Established: Mercedes-Benz S-Class. |
-| 东瀛战神日产GTR | the 'War God of the East' (Nissan GT-R) | 东瀛战神 = lit. 'War God of the Eastern Land' (东瀛 = Japan), the Chinese epithet for the Nissan GT-R (Western nickname 'Godzilla'). **Stress the epithet** — render 东瀛战神 as 'the War God of the East' and gloss the car, e.g. 'the War God of the East — the Nissan GT-R'. |
+| 东瀛战神日产GTR | the mighty Nissan GT-R ('Godzilla') | 东瀛战神 = lit. 'War God of the Eastern Land' (东瀛 = Japan), a praising epithet for the Nissan GT-R. Use the car's own native English honorific **'Godzilla'** to carry the praise while naming the model — e.g. 'the mighty Nissan GT-R, a.k.a. Godzilla'. Keep both the model name and the awe; don't flatten to a bare model name. |
 | 丰田皇冠皇家沙龙 | Toyota Crown Royal Saloon | '80年代买的丰田皇冠皇家沙龙' — the 1980s Crown Royal Saloon, a status car. Established English: Toyota Crown Royal Saloon. |
 | 迈巴赫 | Maybach | The author's 1M+-yuan car the father drove off with. Established: Maybach (Mercedes-Maybach). |
 | 索尼PS2游戏机 | the Sony PS2 (PlayStation 2) | Banned-console example. Established: Sony PlayStation 2 (PS2). |
 | 英伟达 | Nvidia | Established English brand name; '卖飞英伟达' = sold (out of) Nvidia stock too early. |
-| 至正潮菜 | Zhizheng Chaozhou Cuisine (Zhizheng Chao Cai) | A Teochew restaurant in Shenzhen Bay MixC. Render as the restaurant name; '潮菜' = Teochew cuisine. |
+| 至正潮菜 | Zhizheng Teochew Cuisine (Zhizheng Chao Cai) | A Teochew restaurant in Shenzhen Bay MixC. Render as the restaurant name; '潮菜' = Teochew cuisine (cuisine/ethnic sense → Teochew, not 'Chaozhou'). |
 | 茹丝葵牛排馆 / Ruth's Chris Steak House | Ruth's Chris Steak House | Source gives English (Ruth's Chris Steak House). Use official brand name. |
-| 迈巴赫S680 | Maybach S680 | Mercedes-Maybach S680; Li Songjian's car. Established model name. |
+| 迈巴赫S680 | Mercedes-Maybach S680 | Li Songjian's car. Render with the full brand 'Mercedes-Maybach S680'. |
 | WhatsApp | WhatsApp | Already in Latin script; keep. |
 | 人人网 / 校内网 | Renren (Xiaonei) | Defunct Chinese social network 人人网, formerly 校内网. Render 'Renren (formerly Xiaonei)'. Li Shuo was a Renren celebrity. |
 | 朋友圈 | WeChat Moments | The Moments social feed within WeChat. Standard English: 'Moments' / 'WeChat Moments'. |
@@ -334,8 +334,8 @@ The **English** column gives the recommended English rendering and the settled c
 | 《世界人权宣言》 | the Universal Declaration of Human Rights | Named as the post-WWII document enshrining these rights. Established English title: Universal Declaration of Human Rights (UDHR). |
 | 《婚姻法》 | the Marriage Law | China's 1950 第一部法律《婚姻法》, praised by Mao. Standard English: 'the Marriage Law (1950)'. |
 | 中国婚姻法 | China's Marriage Law | Current marriage law referenced re 忠实义务 (duty of fidelity). Render 'the Marriage Law / China's marriage law'. |
-| 《黄帝内经》 | the Huangdi Neijing (Yellow Emperor's Inner Canon) | Classical Chinese medical text quoted at the chapter open: ``圣人不治已病治未病……''. Established English: 'Huangdi Neijing / The Yellow Emperor's Inner Canon'. Quote = 'the sage treats illness before it arises...' |
-| 《有官在身》 | A Post in Hand / Holding Office | A book the father gives the author to teach bootlicking superiors. No established English title; render descriptively, e.g. 'Holding Office' / 'Now That You're an Official'. Keep 《》 -> italics/title-case. |
+| 《黄帝内经》 | the Yellow Emperor's Inner Classic (《黄帝内经》) | Foundational Chinese medical classic, quoted at a chapter open: ``圣人不治已病治未病……'' ('the sage treats illness before it arises'). Established English: 'The Yellow Emperor's Inner Classic' (Unschuld) or 'Yellow Emperor's Inner Canon' (UNESCO / Wikipedia); Veith's older version is 'The Yellow Emperor's Classic of Internal Medicine'. Gloss in-text with 《黄帝内经》, not pinyin (the romanized title 'Huangdi Neijing' is also recognized). |
+| 《有官在身》 | Tales of Communist Officials (《有官在身》) | A real 2011 anthology of satirical flash-fiction about Chinese Communist Party / PRC officialdom (官场) by 王跃文, 唐达天, 许开祯 et al. (Jiangsu People's Publishing House); the father gives it to the narrator to teach him to please superiors. No established English title; literal 有…在身 = 'encumbered by / bound by' (holding office), rendered interpretively as 'Tales of Communist Officials' to surface the CPC-officialdom subject (it is an anthology, hence 'Tales'). Gloss in-text with the characters 《有官在身》, not pinyin (You Guan Zai Shen). Keep 《》 → italics/title-case. |
 | 《了不起的盖茨比》 | The Great Gatsby | F. Scott Fitzgerald. The author quotes 'her voice is full of money' (already in English in the source, glossed '她的声音充满了金钱'). Use the established title The Great Gatsby and the canonical English quote. |
 | 《论中学生结婚》 | On Middle-School Students Getting Married | Essay title (section header). Render descriptively; 中学生 = secondary/middle-school students. |
 | 《论张桂梅》 | On Zhang Guimei | Essay title (section header). |
@@ -345,8 +345,8 @@ The **English** column gives the recommended English rendering and the settled c
 | 《楚门的世界》 | The Truman Show | Film; established English title given parenthetically in source as (The Truman Show). |
 | 《怒放的生命》 | Blooming Life / 'Life in Full Bloom' | Song by Wang Feng (汪峰). No single canonical English title; 'Blooming Life' is common. Keep 《》 as a song title. |
 | 《一无所有》 | Nothing to My Name | Song by Cui Jian (崔健); widely known established English title 'Nothing to My Name'. |
-| 《聊斋》 | Strange Tales from a Chinese Studio (Liaozhai) | Pu Songling's 聊斋志异; the female-ghost (吸阳气) imagery is drawn from it. Established English title; 'Liaozhai' acceptable. |
-| 《出师表》 | Chu Shi Biao / 'Memorial on Dispatching the Troops' | Zhuge Liang's famous memorial. Established renderings: 'Chu Shi Biao' or 'Former Memorial on the Expedition'. Keep 《》. |
+| 《聊斋》 | Strange Tales from a Chinese Studio (《聊斋志异》) | Pu Songling's 聊斋志异 (the source shortens it to 《聊斋》); the female-ghost (吸阳气) imagery is drawn from it. Standard English title from John Minford's Penguin Classics translation (2006); Herbert Giles' older version is 'Strange Stories from a Chinese Studio'. Gloss in-text with the characters 《聊斋志异》/《聊斋》, not pinyin ('Liaozhai' is the recognized short romanization). |
+| 《出师表》 | Memorial on the Expedition (《出师表》) | Zhuge Liang's famous memorial to the Shu emperor before his northern expedition — a byword for loyalty, paired with 白帝城托孤. Lead with the English 'Memorial on the Expedition' (also 'Memorial on Dispatching the Army'); gloss in-text with 《出师表》, not pinyin ('Chu Shi Biao' is the recognized romanization, Wikipedia). 前/后出师表 = the First / Second Memorial. Keep 《》. |
 | 《飞厦forever》 | Feixia Forever | Author's own blog post (footnote: sinyalee.com/blog/?p=236). Feixia = 飞厦中学 (Feixia Middle School). Mixed Chinese+English title; keep as is, render '飞厦' as Feixia. |
 | 《For WH》 | For WH | Author's own blog post (footnote: sinyalee.com/blog/?p=383). Title already English; WH = initials of 吴宏 (Wu Hong). |
 | 桃园三结义 | the Oath of the Peach Garden | Three Kingdoms episode (Liu Bei, Guan Yu, Zhang Fei sworn brotherhood). Established 'Oath of the Peach Garden'. |
@@ -370,7 +370,7 @@ The **English** column gives the recommended English rendering and the settled c
 | 和稀泥法 | the mud-smearing approach / split-the-difference jurisprudence | 和稀泥 = idiom for fudging/papering-over a dispute by appeasing both sides. '铁绿帽法之上实行和稀泥法'. Render 'mud-smearing / fudge-it jurisprudence' preserving the idiom. |
 | 南山必胜客 | the 'Nanshan Pizza Hut' (Nanshan undefeated litigant) | Internet nickname for Tencent (HQ in Nanshan, Shenzhen) for 'always winning' in Nanshan District court; '必胜客' puns on Pizza Hut (必胜客) and '必胜' = sure to win. Render with a note preserving the Pizza-Hut pun, e.g. "'Nanshan Pizza Hut' (a sure-win litigant)". |
 | 爱情神教 | the Cult of Romantic Love | Author-coined: 爱情神教 = treating romantic love as a religion ('神教' = a deifying cult). Render 'the Cult of Love' / 'Love-as-Religion cult' to preserve the religious mockery. |
-| 感觉人 | 'feeling man' (homo sentiens) | Author-coined counterpart to 理性经济人: women modeled as 感觉人 = agents maximizing 'feeling' rather than money. Render 'feeling man' (consider a homo-economicus-echoing coinage like 'homo sentiens') with a gloss. Central coinage. |
+| 感觉人 | homo sentiens (the 'feeling' human) | Author-coined counterpart to 理性经济人 (rational economic man / homo economicus): modern women modeled as 感觉人 — agents who maximize 'feeling' rather than money. Render the Latin **'homo sentiens'** to mirror 'homo economicus'; Latin *homo* = 'human', so it sidesteps gender (the coinage uses neutral 人, and the author applies it to women — so do NOT render 'feeling man'). Gloss as 'the feeling human/woman' on first use. Central coinage. |
 | 数值怪 | a 'stat monster' (min-maxed character) | Gaming slang: 数值怪 = a character with overpowering raw stats. Self-deprecating: '数值怪以为自己有操作' = a stat-monster pretending it has skill. Render preserving the RPG-stats metaphor. |
 | memcpy | memcpy (memory copy) | Programming joke: women's identical lines as if their brains were memcpy'd. Footnote glosses 内存复制. Keep 'memcpy' verbatim (it is code) and gloss '(memory copy)'. |
 | 两年之誓 | the 'two-year vow' | 你的那个两年之誓 (quoted from Wu Hong in 《For WH》): the author's personal 'two-year vow/pledge'. Render 'two-year vow'; a personal coinage, gloss as a self-imposed pledge. |
