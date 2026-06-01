@@ -81,8 +81,8 @@ Censor the content **most sensitive to Beijing**, and pin the full term with con
 
 **Do not over-censor.** Sex and legal content are in scope and stay. The book's other loaded
 references are commonly discussed in Mainland China and stay as written (background list in
-`scripts/languages/Chinese/prompt.md` under "Sensitive references" — context, not a censor
-list). When unsure whether new content rises to the level above, ask the user rather than
+`scripts/languages/Translation Guide/prompt.md` under "Sensitive references" — context, not a
+censor list). When unsure whether new content rises to the level above, ask the user rather than
 silently swapping or leaving it; record each settled decision as a `censor.csv` rule (or, if
 it is a judgment principle, here under "Settled").
 

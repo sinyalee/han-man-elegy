@@ -100,8 +100,9 @@ say so in its `explain` so the reviewer confirms the `²`/`³` rather than trust
    watchlist below for `¹`. While there, check the TC reads naturally — idiomatic TC, not just
    de-simplified Mandarin. Confirm a mark by deleting it; fix a wrong one and, if it recurs,
    record it (word → 02/03, character rule → here) before deleting.
-4. **Wording pass** with `scripts/review.md` and `scripts/languages/Chinese/prompt.md`
-   (author-coined terms, intentional stand-ins, sensitive content the translation must keep).
+4. **Wording pass** with `scripts/review.md`, `scripts/languages/Chinese/prompt.md` (Chinese
+   review rules), and `scripts/languages/Translation Guide/prompt.md` (author-coined terms,
+   sensitive references, and other source-text background the conversion must keep).
 5. **Build:** `python3 scripts/build.py --language "Traditional Chinese"`; fix any LaTeX errors.
 
 Do not edit `01_characters.csv` or the scripts during a translation run — vocabulary decisions

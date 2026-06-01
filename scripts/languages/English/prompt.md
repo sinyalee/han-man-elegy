@@ -1,11 +1,11 @@
-English is a **translation** of the Chinese original in `/text`, built from `/translations/English/`. Like the Chinese original (and unlike the censored "Simplified Chinese"), the English version is **uncensored** — keep every real name and real reference intact. Use these rules together with the general processes in `/scripts/translate.md` and `/scripts/review.md`, and with the term reference in `/scripts/languages/English/glossary.md`. You MUST also respect the source-side decisions in `/scripts/languages/Chinese/prompt.md` (author-coined terms, intentional stand-ins). Where this file conflicts with the Chinese instruction, this file wins — except that author coinages must always be preserved as wordplay (see below).
+English is a **translation** of the Chinese original in `/text`, built from `/translations/English/`. Like the Chinese original (and unlike the censored "Simplified Chinese"), the English version is **uncensored** — keep every real name and real reference intact. Use these rules together with the general processes in `/scripts/translate.md` and `/scripts/review.md`, and with the Translation Guide in `/scripts/languages/Translation Guide/` — its `prompt.md` (cross-language rules: uncensored real names, the 潮汕→"Teochew" rule, preserving coinages as wordplay) and its consolidated `glossary.md` (the per-term reference: every figure, coinage, place, and recurring word). Where this file conflicts with the Translation Guide, this file wins — except that author coinages must always be preserved as wordplay (see below).
 
 # Settled conventions
 
 ## Title and names
 
 * **Book title** `人妻约会指南` → **"The Married Woman Dating Guide"**. Use this exact title everywhere: `\bookname` in `config.tex`, the running self-references in the text, and the PDF filename. The author's name `李新野` → **"Sinya Lee"** (his established English name; not "Li Xinye").
-* **Romanization**: pinyin without tone marks for mainland names/places that have no established English form (郭菊阳 → Guo Juyang, 李松坚 → Li Songjian, 张桂梅 → Zhang Guimei). Defer to `glossary.md` for the per-term decision and keep every recurring name/place/term rendered **identically** throughout — this is the #1 risk when files are translated in parallel.
+* **Romanization**: pinyin without tone marks for mainland names/places that have no established English form (郭菊阳 → Guo Juyang, 李松坚 → Li Songjian, 张桂梅 → Zhang Guimei). Defer to the Translation Guide's `glossary.md` for the per-term decision and keep every recurring name/place/term rendered **identically** throughout — this is the #1 risk when files are translated in parallel.
 * **Established names override pinyin.** For Taiwan / Hong Kong / overseas figures, and for anyone — or any institution or development — with a widely-used English or official name, use that form, never mainland pinyin: 焦恩俊 → Vincent Chiao, 吴亦凡 → Kris Wu, 刘强东 → Richard Liu, 宗馥莉 → Kelly Zong, 姚期智 → Andrew Yao (Andrew Chi-Chih Yao); 清华大学 → Tsinghua University, 中山大学 → Sun Yat-sen University, 香港科大 → HKUST; 星河湾 → Star River, 波托菲诺纯水岸 → OCT Portofino (檀宫 has no confident official English name — romanize as "Tan Gong", do not guess a brand). When unsure, verify the established name rather than defaulting to pinyin.
 
 ## Voice and register — fully natural English
@@ -17,7 +17,7 @@ Render the book in **idiomatic, direct English with no calques**. It is a frank,
     - `黄毛` → "the other man" / "the young lover" (not "yellow-hair").
     - `苦主` → "the cuckolded husband" / "the husband" (the wronged party).
     - `绿帽` / `戴绿帽` → "cuckoldry" / "to be cuckolded" — **drop the "green hat" image.** e.g. the recurring slogan `住明园楼盘，享绿帽人生` → "Live in a Mingyuan property, live a cuckold's life." (translate it **identically** in `dedication.tex` and `appendix_mingyuan.tex` — it's a running gag); `绿帽楼盘` → "a cuckold property"; `明园元祖绿帽房` → "the original Mingyuan cuckold flat."
-* Explicit sexual terms get equally direct English (操/干 → "fuck", 鸡 → "whore", 二手货 → "used goods", 内射/无套 → "come inside"/"bareback", etc.). See `glossary.md` → "Explicit / sexual vocabulary." Do not tone these down.
+* Explicit sexual terms get equally direct English (操/干 → "fuck", 鸡 → "whore", 二手货 → "used goods", 内射/无套 → "come inside"/"bareback", etc.). See the Translation Guide's `glossary.md` → "Explicit / sexual vocabulary." Do not tone these down.
 
 ## Author-coined wordplay — preserve as English coinages
 
@@ -25,9 +25,9 @@ The author invents terms; render the **device**, do not normalize to plain langu
 
 * `铁绿帽法` → **"the Iron Cuckold Law"**; keep the `\footnote` that explains the 满清铁帽子王 ("iron-cap prince") allusion (a title that can never be removed) so the pun survives.
 * `保进步守` → a portmanteau of *progressive* + *conservative*, e.g. **"progresservatism" / "progresservatives"**, with a brief inline gloss on first use ("extreme conservatism dressed up as century-old progressivism"). Mirrors the author jamming 进步 into 保守.
-* Epithets stay vivid: `猪精` → "the pig-demon", `狐狸精` → "the fox-spirit/vixen", `教授鸡` → "the professor-whore", `奋斗鸡` → "hustle-whore", `奋斗嫖客` → "hustle-john", `女拳头子` → "feminist ringleader" (note the 权/拳 "rights"/"fist" pun). Keep the extended animal-spirit metaphor in `appendix_articles.tex` (`给鸡当狗`, `畜生的畜生`, 鸡/鸭/牛马/猪精/狐狸精) coherent across the whole essay.
+* Epithets stay vivid: `猪精` → "the pig-demon", `狐狸精` → "the fox-demon" (render 精 as "demon", not "spirit"; 猪哥精, the mother's Teochew form, also → "pig-demon"), `教授鸡` → "the professor-whore", `奋斗鸡` → "hustle-whore", `奋斗嫖客` → "hustle-john", `女拳头子` → "feminist ringleader" (note the 权/拳 "rights"/"fist" pun). Keep the extended animal-demon metaphor in `appendix_articles.tex` (`给鸡当狗`, `畜生的畜生`, 鸡/鸭/牛马/猪精/狐狸精) coherent across the whole essay.
 
-When a review settles a new coinage rendering, record it here and in `glossary.md`.
+When a review settles a new coinage rendering, record it here and in the Translation Guide's `glossary.md`.
 
 ## Uncensored / sensitive content
 
@@ -36,17 +36,13 @@ This is the uncensored version. **Keep verbatim**, do not redact or soften:
 * Real political names and events: `陈良宇` → Chen Liangyu, `蒋超良` → Jiang Chaoliang, `六四事件` → "the June Fourth Incident", `张桂梅` → Zhang Guimei, `杨笠` → Yang Li, and the named real cases (苏享茂/翟欣欣, 胖猫/谭竹, 董志民, 重庆姐弟坠亡案). Use official English for state slogans (`共同富裕` → "common prosperity", `中华民族的伟大复兴` → "the Great Rejuvenation of the Chinese Nation").
 * Real-name accusations against `李松坚` / `凌菲菲` / `许洁` and the **real phone numbers** doxxed in `chapter_how.tex` — keep the digit strings exactly as printed. (Removing any of this would be censorship; that belongs only to derived censored versions, which English is not.)
 
-## Coy redaction blanks — never fill them
-
-The author uses `\_` / `\_\_` (escaped underscores) as deliberate self-censoring blanks for vulgar words (legal cover), e.g. `求我\_在她里面` (preface), `我和郭菊阳\_\_的时候` / `狠狠地打她的\_\_` (chapter_sex), `不能\_\_` (appendix_articles). **Preserve them as blanks** in the English — keep the same `\_` count, placed where the omitted word would sit in the English sentence. Do NOT guess the word.
-
 # LaTeX integrity (translate text, preserve structure)
 
 * Preserve every command, environment, and option: `\chapter`/`\section`/`\subsection` (incl. starred `\chapter*{作者简介}`), `\textbf`/`\textit` (keep emphasis on thesis sentences and the italic essay postscripts), `\footnote{...}` (translate the contents — many carry load-bearing definitions), `\begin{figure}[H]…\includegraphics…\caption{…}` (translate **only** `\caption`; leave `[H]`, `\centering`, width, and image paths untouched), `\begin{enumerate}`/`\item`.
 * **Cross-reference labels are keys — never translate them.** Keep `\label{3faces}`, `\label{sister}`, and the `axiom`/`theorem`/`corollary` labels `a1`–`a4`, `t1`–`t2`, `c1`–`c2`, plus every `\ref{…}` / `\hyperref[…]{…}` that points at them. In `\hyperref[…]{…}` translate the **visible link text** but keep hardcoded refs like "附录A.3" → "Appendix A.3" (translate 附录, keep A.3/A.4).
 * **Math is verbatim.** Leave `$…$` and `$$…$$` (e.g. `$$\int_{t}^{t+\delta}p_x\,dx$$`, `$\sum_{i=1}^n p_i$`, `$p_i$/$v_i$/$c_i$`) exactly; translate only the surrounding prose that names the variables.
 * **`\begin{verbatim}` in `closing.tex`** (Project: Sirius / Author: Sinya / Date: 2023-02-21): keep byte-for-byte; do not translate or reflow.
-* **Escapes:** keep `\%` on every percentage; watch for `&`, `#`, `_` (only the intentional `\_` blanks should appear). Balanced braces/environments.
+* **Escapes:** keep `\%` on every percentage; watch for unescaped `&`, `#`, `_` (underscores should appear only inside math mode, e.g. `$p_x$`). Balanced braces/environments.
 * **Quotes:** the source uses the LaTeX `` ``…'' `` convention, which renders as correct English curly double quotes — **keep it** (do NOT convert to corner brackets). Nested single quotes use `` `…' ``. Watch the nested `` ``no means no''（`` `不要'就是`不要' ''） `` — render just `` ``no means no'' `` and drop the now-redundant Chinese gloss.
 * **Redundant glosses:** where the source is `中文（English）` and the English already names the concept (anti-slut defense, mechanism design, utility, Castle Doctrine, PrEP/PEP, …), use the English term **once** and drop the parenthetical. Keep genuinely informative parentheticals.
 * **Titles:** `《Work》` → italics `\textit{Work}` (e.g. `《了不起的盖茨比》` → `\textit{The Great Gatsby}`); the four appendix essay `《…》` titles double as their `\section{}` headers (without brackets).
