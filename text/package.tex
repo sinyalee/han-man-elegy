@@ -28,3 +28,14 @@
 }
 
 \raggedbottom
+
+% --- Simplified-Chinese-only footnote --------------------------------------
+% \scfootnote{...} typesets a footnote ONLY in the Simplified Chinese (Mainland)
+% edition; in the uncensored original and in every translation it renders nothing
+% (the argument is silently dropped). The boolean below is OFF here; the only thing
+% that turns it on is the Simplified Chinese build, through a single censor.csv rule
+% that rewrites the toggle line -- censor.csv being, by design, the sole difference
+% between /text and that edition. See scripts/languages/Simplified Chinese/prompt.md.
+\newif\ifSCversion
+\SCversionfalse
+\newcommand{\scfootnote}[1]{\ifSCversion\footnote{#1}\fi}
