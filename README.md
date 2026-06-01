@@ -24,7 +24,7 @@ And I created a small software automate the formatting, building, translation an
 
 ### The Simplified Chinese Book
 
-The original Simplified Chinese book, Married Women Dating Guide (人妻约会指南), is dedicated to public domain via CC0 1.0 Creative Commons License. License: [releases/versions/LICENSE](releases/versions/LICENSE)
+The original Simplified Chinese book, Married Women Dating Guide (人妻约会指南), is dedicated to public domain via CC0 1.0 Creative Commons License. License: [releases/cn_versions/LICENSE](releases/cn_versions/LICENSE)
 
 ### The Translation Software
 
