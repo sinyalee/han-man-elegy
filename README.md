@@ -26,9 +26,9 @@ And I created a small software automate the formatting, building, translation an
 
 The original Simplified Chinese book, Married Women Dating Guide (人妻约会指南), is dedicated to public domain via CC0 1.0 Creative Commons License. License: [releases/cn_versions/LICENSE](releases/cn_versions/LICENSE)
 
-### The Translation Software
+### The Software
 
-The translation and formatting software is shared via BUSL-1.1 Business Source License. License: [scripts/LICENSE](scripts/LICENSE)
+The formatting, building, translation and localization software is shared via BUSL-1.1 Business Source License. License: [scripts/LICENSE](scripts/LICENSE)
 
 ### English Translation and Beyond
 
