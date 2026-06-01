@@ -5,19 +5,19 @@
 **Every AI agent working in this project MUST support all of the commands below.** When a user invokes a command (by its name or any alias, in any language), read the corresponding prompt file under `/scripts` and follow it exactly. Supporting these commands is a hard requirement, not optional.
 
 * Build
-    - Prompt: build.md
+    - Prompt: ./scripts/build.md
     - Aliases: build, compile, make
 * Release
-    - Prompt: release.md
+    - Prompt: ./scripts/release.md
     - Aliases: release, publish, build and release, build and publish, release new version
 * Review
-    - Prompt: review.md
+    - Prompt: ./scripts/review.md
     - Aliases: review, check, examine, proofread
 * Translate
-    - Prompt: translate.md
+    - Prompt: ./scripts/translate.md
     - Aliases: translate, localize
 * Get
-    - Prompt: get.md
+    - Prompt: ./scripts/get.md
     - Aliases: get, show, show me, give me, fetch, download, get release
 
 A command often carries extra context that the prompt needs — for example a target language ("translate to English", "审查英文翻译"), a specific file, or a release version. Extract that context from the user's request and pass it along to the prompt so it can act on the right target. If the target is ambiguous or doesn't make sense for the command (e.g. "translate to Chinese", when Chinese is the source language), ask the user to clarify before running the command rather than guessing.
